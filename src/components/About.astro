@@ -1,83 +1,67 @@
 ---
-// About Section with stats and profile description
+// About Section - Adapted from Stitch design (asymmetric layout with image and jumbo stats)
 ---
 
 <section class="about section" id="about">
+  <!-- Background Decorations -->
+  <div class="about-bg-glow glow-1"></div>
+  <div class="about-bg-glow glow-2"></div>
+  
   <div class="container">
-    <div class="section-header reveal">
-      <p class="section-subtitle">Conóceme</p>
-      <h2 class="section-title">Sobre <span class="gradient-text">Mí</span></h2>
-    </div>
-    
-    <div class="about-content">
-      <div class="about-text reveal-left">
-        <p class="about-intro">
-          Soy <strong>Ronald Eduardo Davila Medina</strong>, Ingeniero de Sistemas egresado de la 
-          Universidad Nacional José Faustino Sánchez Carrión, con una pasión por crear soluciones 
-          tecnológicas que resuelvan problemas reales.
-        </p>
-        <p>
-          Mi experiencia abarca el ciclo completo de desarrollo de software, desde el análisis 
-          de requerimientos hasta el despliegue en producción. Me especializo en el stack moderno 
-          de JavaScript (<strong>Node.js, NestJS, React</strong>) y utilizo <strong>PHP y Python</strong> 
-          para el procesamiento eficiente de datos y automatización.
-        </p>
-        <p>
-          Destaco por mi capacidad de optimizar procesos complejos mediante software a medida. 
-          En mi última experiencia, logré reducir el tiempo de procesamiento de reportes 
-          financieros de <strong>7 días a solo 2 días</strong>, demostrando cómo la tecnología 
-          bien aplicada puede transformar operaciones empresariales.
-        </p>
-        
-        <div class="about-info">
-          <div class="info-item">
-            <span class="info-icon">📍</span>
-            <span class="info-text">Barranca, Lima - Perú</span>
-          </div>
-          <div class="info-item">
-            <span class="info-icon">🎓</span>
-            <span class="info-text">Décimo Superior</span>
-          </div>
-          <div class="info-item">
-            <span class="info-icon">💼</span>
-            <span class="info-text">Disponible para proyectos</span>
+    <div class="about-grid">
+      <!-- Left Column: Image -->
+      <div class="about-image-col reveal-left">
+        <div class="image-wrapper">
+          <div class="image-gradient"></div>
+          <img src="/profile.jpg" alt="Ronald Davila - Full Stack Developer" class="profile-image">
+          <!-- Floating Badge -->
+          <div class="image-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Full Stack Developer</span>
           </div>
         </div>
-        
-        <a href="/cv.html" target="_blank" class="btn btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10 9 9 9 8 9"/>
-          </svg>
-          Ver CV Completo
-        </a>
+        <!-- Decorative Border -->
+        <div class="image-border"></div>
       </div>
       
-      <div class="about-stats reveal-right stagger-children">
-        <div class="stat-card">
-          <div class="stat-icon">💻</div>
-          <div class="stat-number" data-count="400">0</div>
-          <div class="stat-label">Horas de Prácticas</div>
+      <!-- Right Column: Content -->
+      <div class="about-content-col reveal-right">
+        <!-- Header -->
+        <div class="about-header">
+          <div class="section-label">
+            <span class="label-line"></span>
+            <span class="label-text">Sobre Mí</span>
+          </div>
+          <h2 class="about-title">
+            Diseñando el futuro <br>
+            <span class="text-muted">línea por línea.</span>
+          </h2>
+          <p class="about-text">
+            Me apasiona crear soluciones 
+            digitales que resuelvan problemas reales. Mi enfoque combina la precisión técnica 
+            con un ojo agudo para el diseño, buscando siempre soluciones elegantes a problemas complejos.
+          </p>
         </div>
-        <div class="stat-card">
-          <div class="stat-icon">🚀</div>
-          <div class="stat-number" data-count="5">0</div>
-          <div class="stat-label">Proyectos Completados</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">⚡</div>
-          <div class="stat-number" data-count="71">0</div>
-          <div class="stat-suffix">%</div>
-          <div class="stat-label">Reducción de Tiempo</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">🎯</div>
-          <div class="stat-number" data-count="10">0</div>
-          <div class="stat-suffix">+</div>
-          <div class="stat-label">Tecnologías</div>
+        
+        <!-- Minimalist Stats -->
+        <div class="about-stats-mini">
+          <div class="stat-item">
+            <span class="stat-val">10+</span>
+            <span class="stat-lbl">Tecnologías</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-val">5+</span>
+            <span class="stat-lbl">Proyectos</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-val">100%</span>
+            <span class="stat-lbl">Compromiso</span>
+          </div>
         </div>
       </div>
     </div>
@@ -86,190 +70,276 @@
 
 <style>
   .about {
-    background: var(--color-dark-soft);
-    position: relative;
-  }
-  
-  .about::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
-  }
-  
-  .about-content {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  
-  .about-text p {
-    margin-bottom: 1.25rem;
-    font-size: 1.0625rem;
-  }
-  
-  .about-intro {
-    font-size: 1.25rem !important;
-    color: var(--color-text) !important;
-  }
-  
-  .about-text strong {
-    color: var(--color-primary-light);
-  }
-  
-  .about-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin: 2rem 0;
-  }
-  
-  .info-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
     background: var(--color-dark);
-    border-radius: var(--radius-full);
-    font-size: 0.9rem;
-  }
-  
-  .info-icon {
-    font-size: 1.1rem;
-  }
-  
-  .info-text {
-    color: var(--color-text);
-  }
-  
-  /* Stats Grid */
-  .about-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-  
-  .stat-card {
-    background: var(--color-dark);
-    padding: 2rem 1.5rem;
-    border-radius: var(--radius-xl);
-    text-align: center;
-    border: 1px solid var(--color-dark-muted);
-    transition: all var(--transition-base);
     position: relative;
     overflow: hidden;
   }
   
-  .stat-card::before {
-    content: '';
+  /* Background Glows */
+  .about-bg-glow {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--gradient-primary);
-    transform: scaleX(0);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  
+  .glow-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(13, 148, 136, 0.1);
+    top: -100px;
+    left: -100px;
+    filter: blur(100px);
+  }
+  
+  .glow-2 {
+    width: 350px;
+    height: 350px;
+    background: rgba(139, 92, 246, 0.05);
+    top: 200px;
+    right: -100px;
+    filter: blur(80px);
+  }
+  
+  /* Grid Layout */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Image Column */
+  .about-image-col {
+    position: relative;
+    margin-top: 2rem;
+  }
+  
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--color-dark-muted);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .image-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-dark) 0%, transparent 50%);
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  
+  .image-wrapper:hover .profile-image {
+    transform: scale(1.05);
+  }
+  
+  /* Floating Badge */
+  .image-badge {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-base);
+  }
+  
+  .image-badge:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  .image-badge svg {
+    color: var(--color-primary);
+  }
+  
+  .image-badge span {
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  /* Decorative Border */
+  .image-border {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(13, 148, 136, 0.3);
+    border-radius: var(--radius-xl);
+    z-index: -1;
     transition: transform var(--transition-base);
   }
   
-  .stat-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--color-primary);
-    box-shadow: var(--shadow-glow);
+  .about-image-col:hover .image-border {
+    transform: translate(0.5rem, -0.5rem);
   }
   
-  .stat-card:hover::before {
-    transform: scaleX(1);
+  /* Content Column */
+  .about-content-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1rem;
   }
   
-  .stat-icon {
+  .about-header {
+    margin-bottom: 2rem;
+  }
+  
+  /* Section Label */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .label-line {
+    width: 2rem;
+    height: 2px;
+    background: var(--color-primary);
+  }
+  
+  .label-text {
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .about-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-light);
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-title .text-muted {
+    color: var(--color-text-muted);
+  }
+  
+  .about-text {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    max-width: 600px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .about-text strong {
+    color: var(--color-light);
+  }
+  
+  /* Minimal Stats */
+  .about-stats-mini {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-dark-muted);
+  }
+  
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .stat-val {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .stat-number {
-    font-size: 2.75rem;
     font-weight: 800;
     color: var(--color-light);
-    display: inline;
+    line-height: 1;
+    background: linear-gradient(to right, #fff, var(--color-text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
-  .stat-suffix {
-    font-size: 1.5rem;
-    font-weight: 700;
+  .stat-lbl {
+    font-size: 0.85rem;
+    font-weight: 500;
     color: var(--color-primary);
-    display: inline;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
   
-  .stat-label {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    margin-top: 0.5rem;
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--color-dark-muted);
   }
   
   /* Responsive */
-  @media (max-width: 900px) {
-    .about-content {
+  @media (max-width: 1024px) {
+    .about-grid {
       grid-template-columns: 1fr;
       gap: 3rem;
+      text-align: center;
     }
     
-    .about-stats {
-      order: -1;
+    .about-image-col {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .about-content-col {
+      padding-left: 0;
+      align-items: center;
+    }
+    
+    .section-label {
+      justify-content: center;
+    }
+    
+    .about-stats-mini {
+      justify-content: center;
+      gap: 2rem;
+    }
+    
+    .image-border {
+      display: none;
     }
   }
   
-  @media (max-width: 480px) {
-    .about-stats {
-      grid-template-columns: 1fr;
+  @media (max-width: 600px) {
+    .about-title {
+      font-size: 1.75rem;
     }
     
-    .about-info {
-      flex-direction: column;
+    .about-title br {
+      display: none;
+    }
+    
+    .about-stats-mini {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    
+    .stat-divider {
+      display: none;
     }
   }
 </style>
-
-<script>
-  // Counter animation for stats
-  const counters = document.querySelectorAll('.stat-number');
-  
-  const animateCounter = (counter: Element) => {
-    const target = parseInt(counter.getAttribute('data-count') || '0');
-    const duration = 2000;
-    const increment = target / (duration / 16);
-    let current = 0;
-    
-    const updateCounter = () => {
-      current += increment;
-      if (current < target) {
-        counter.textContent = Math.floor(current).toString();
-        requestAnimationFrame(updateCounter);
-      } else {
-        counter.textContent = target.toString();
-      }
-    };
-    
-    updateCounter();
-  };
-  
-  // Intersection Observer for counter animation
-  const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const counters = entry.target.querySelectorAll('.stat-number');
-        counters.forEach(counter => animateCounter(counter));
-        statsObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-  
-  const statsSection = document.querySelector('.about-stats');
-  if (statsSection) {
-    statsObserver.observe(statsSection);
-  }
-</script>

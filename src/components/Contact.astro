@@ -1,97 +1,399 @@
 ---
-const contactInfo = [
-  { icon: "📍", label: "Ubicación", value: "Barranca, Lima - Perú" },
-  { icon: "📧", label: "Email", value: "contactos.ronalddm@gmail.com", link: "mailto:contactos.ronalddm@gmail.com" },
-  { icon: "📱", label: "Teléfono", value: "+51 992 311 691", link: "tel:+51992311691" },
-  { icon: "💼", label: "LinkedIn", value: "ronalddm2209", link: "https://linkedin.com/in/ronalddm2209" },
-];
+// Contact Section - Adapted from Stitch design
 ---
 
 <section class="contact section" id="contact">
   <div class="container">
-    <div class="section-header reveal">
-      <p class="section-subtitle">Hablemos</p>
-      <h2 class="section-title">Ponte en <span class="gradient-text">Contacto</span></h2>
-      <p class="section-description">¿Tienes un proyecto en mente? Me encantaría escucharte y colaborar contigo.</p>
-    </div>
-    
-    <div class="contact-content">
+    <div class="contact-grid">
+      <!-- Left Column: Info -->
       <div class="contact-info reveal-left">
-        <h3 class="contact-subtitle">Información de Contacto</h3>
-        <p class="contact-text">Estoy disponible para proyectos freelance, oportunidades laborales o simplemente para conectar.</p>
+        <div class="contact-badge">Contacto</div>
+        <h2 class="contact-title">Trabajemos <span class="gradient-text">juntos.</span></h2>
+        <p class="contact-description">
+          ¿Tienes un proyecto en mente? Envíame un mensaje o contáctame por email. 
+          Actualmente estoy disponible para nuevas oportunidades.
+        </p>
         
-        <div class="info-list">
-          {contactInfo.map((info) => (
-            <div class="info-card">
-              <span class="info-icon">{info.icon}</span>
-              <div class="info-content">
-                <span class="info-label">{info.label}</span>
-                {info.link ? (
-                  <a href={info.link} target={info.link.startsWith('http') ? '_blank' : undefined} class="info-value">{info.value}</a>
-                ) : (
-                  <span class="info-value">{info.value}</span>
-                )}
-              </div>
+        <!-- Contact Details -->
+        <div class="contact-details">
+          <div class="detail-item">
+            <div class="detail-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
             </div>
-          ))}
-        </div>
-        
-        <div class="social-links">
-          <a href="https://linkedin.com/in/ronalddm2209" target="_blank" class="social-btn" aria-label="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="https://github.com/ronalddm2209" target="_blank" class="social-btn" aria-label="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          </a>
-          <a href="mailto:contactos.ronalddm@gmail.com" class="social-btn" aria-label="Email">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </a>
+            <div class="detail-content">
+              <span class="detail-label">Email</span>
+              <a href="mailto:contactos.ronalddm@gmail.com" class="detail-value">contactos.ronalddm@gmail.com</a>
+            </div>
+          </div>
+          
+          <div class="detail-item">
+            <div class="detail-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="detail-content">
+              <span class="detail-label">Teléfono</span>
+              <a href="tel:+51992311691" class="detail-value">+51 992 311 691</a>
+            </div>
+          </div>
+          
+          <div class="detail-item">
+            <div class="detail-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="detail-content">
+              <span class="detail-label">Ubicación</span>
+              <span class="detail-value">Barranca, Lima - Perú</span>
+            </div>
+          </div>
         </div>
       </div>
       
-      <form class="contact-form reveal-right" id="contact-form">
-        <div class="form-group">
-          <label for="name">Nombre</label>
-          <input type="text" id="name" name="name" required placeholder="Tu nombre completo">
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required placeholder="tu@email.com">
-        </div>
-        <div class="form-group">
-          <label for="message">Mensaje</label>
-          <textarea id="message" name="message" rows="5" required placeholder="Cuéntame sobre tu proyecto..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary btn-submit">
-          <span>Enviar Mensaje</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        </button>
-      </form>
+      <!-- Right Column: Form -->
+      <div class="contact-form-wrapper reveal-right">
+        <div class="form-glow"></div>
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="4"/>
+                  <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/>
+                </svg>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Asunto</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <line x1="7" y1="7" x2="7.01" y2="7"/>
+              </svg>
+              <select id="subject" name="subject">
+                <option>Consulta de Proyecto</option>
+                <option>Oportunidad Laboral</option>
+                <option>Colaboración</option>
+                <option>Otro</option>
+              </select>
+              <svg class="select-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="5" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-submit">
+            <span>Enviar Mensaje</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .contact { background: var(--color-dark-soft); }
-  .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .contact-subtitle { font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-light); }
-  .contact-text { color: var(--color-text-muted); margin-bottom: 2rem; }
-  .info-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
-  .info-card { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--color-dark); border-radius: var(--radius-lg); transition: all var(--transition-base); }
-  .info-card:hover { transform: translateX(5px); border-left: 3px solid var(--color-primary); }
-  .info-icon { font-size: 1.5rem; }
-  .info-label { font-size: 0.8rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; }
-  .info-value { color: var(--color-text); font-weight: 500; display: block; }
-  a.info-value:hover { color: var(--color-primary); }
-  .social-links { display: flex; gap: 1rem; }
-  .social-btn { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: var(--color-dark); border-radius: var(--radius-lg); color: var(--color-text-muted); transition: all var(--transition-base); }
-  .social-btn:hover { background: var(--gradient-primary); color: white; transform: translateY(-3px); }
-  .contact-form { background: var(--color-dark); padding: 2.5rem; border-radius: var(--radius-xl); border: 1px solid var(--color-dark-muted); }
-  .form-group { margin-bottom: 1.5rem; }
-  .form-group label { display: block; margin-bottom: 0.5rem; color: var(--color-text); font-weight: 500; }
-  .form-group input, .form-group textarea { width: 100%; padding: 1rem; background: var(--color-dark-soft); border: 1px solid var(--color-dark-muted); border-radius: var(--radius-md); color: var(--color-text); font-family: inherit; font-size: 1rem; transition: all var(--transition-base); }
-  .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2); }
-  .form-group textarea { resize: vertical; min-height: 120px; }
-  .btn-submit { width: 100%; }
-  @media (max-width: 900px) { .contact-content { grid-template-columns: 1fr; } }
+  .contact {
+    background: var(--color-dark);
+  }
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  
+  /* Left Column */
+  .contact-badge {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: rgba(13, 148, 136, 0.15);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: var(--radius-full);
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--color-light);
+  }
+  
+  .contact-description {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 400px;
+    margin-bottom: 2.5rem;
+  }
+  
+  /* Contact Details */
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-dark-muted);
+    margin-bottom: 2rem;
+  }
+  
+  .detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .detail-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--color-dark-soft);
+    border-radius: var(--radius-lg);
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+  
+  .detail-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+  }
+  
+  .detail-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-light);
+    transition: color var(--transition-fast);
+  }
+  
+  a.detail-value:hover {
+    color: var(--color-primary);
+  }
+  
+  /* Social Section */
+  .social-section {
+    padding-top: 1.5rem;
+  }
+  
+  .social-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+  
+  .social-buttons {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--color-dark-soft);
+    border-radius: var(--radius-lg);
+    color: var(--color-text);
+    transition: all var(--transition-base);
+  }
+  
+  .social-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-3px);
+  }
+  
+  /* Right Column: Form */
+  .contact-form-wrapper {
+    background: var(--color-dark-soft);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    border: 1px solid var(--color-dark-muted);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .form-glow {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 250px;
+    height: 250px;
+    background: rgba(13, 148, 136, 0.08);
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+  }
+  
+  .contact-form {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-light);
+  }
+  
+  .input-wrapper {
+    position: relative;
+  }
+  
+  .input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    pointer-events: none;
+  }
+  
+  .select-arrow {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    pointer-events: none;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: var(--color-dark);
+    border: 1px solid var(--color-dark-muted);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all var(--transition-base);
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding-left: 2.75rem;
+  }
+  
+  .form-group select {
+    appearance: none;
+    cursor: pointer;
+    padding-right: 2.75rem;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+  }
+  
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--color-dark-muted);
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .btn-submit:hover svg {
+    transform: translateX(3px);
+  }
+  
+  .btn-submit svg {
+    transition: transform var(--transition-base);
+  }
+  
+  /* Responsive */
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .contact-description {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    
+    .contact-form-wrapper {
+      padding: 1.5rem;
+    }
+    
+    .contact-title {
+      font-size: 1.75rem;
+    }
+  }
 </style>
