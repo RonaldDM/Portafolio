@@ -1,5 +1,13 @@
 ---
 // Skills Section - Carousel with colored SVG icons
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'es' } = Astro.props;
+
 const techIcons = [
   { name: "JavaScript", icon: "/icons/javascript.svg", color: "#F7DF1E" },
   { name: "TypeScript", icon: "/icons/typescript.svg", color: "#3178C6" },
@@ -22,8 +30,8 @@ const techIcons = [
 <section class="skills section" id="skills">
   <div class="container">
     <div class="section-header reveal">
-      <p class="section-subtitle">Mi Stack</p>
-      <h2 class="section-title">Tecnologías que <span class="gradient-text">domino</span></h2>
+      <p class="section-subtitle">{t(lang, 'skills.label')}</p>
+      <h2 class="section-title">{t(lang, 'skills.title')} <span class="gradient-text">{t(lang, 'skills.title_highlight')}</span></h2>
     </div>
     
     <!-- Tech Carousel -->

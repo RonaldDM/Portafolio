@@ -1,5 +1,12 @@
 ---
-// About Section - Adapted from Stitch design (asymmetric layout with image and jumbo stats)
+// About Section - Adapted from Stitch design
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'es' } = Astro.props;
 ---
 
 <section class="about section" id="about">
@@ -20,7 +27,7 @@
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
               <polyline points="22 4 12 14.01 9 11.01"/>
             </svg>
-            <span>Full Stack Developer</span>
+            <span>{t(lang, 'about.badge')}</span>
           </div>
         </div>
         <!-- Decorative Border -->
@@ -33,34 +40,32 @@
         <div class="about-header">
           <div class="section-label">
             <span class="label-line"></span>
-            <span class="label-text">Sobre Mí</span>
+            <span class="label-text">{t(lang, 'about.label')}</span>
           </div>
           <h2 class="about-title">
-            Diseñando el futuro <br>
-            <span class="text-muted">línea por línea.</span>
+            {t(lang, 'about.title')} <br>
+            <span class="text-muted">{t(lang, 'about.subtitle')}</span>
           </h2>
           <p class="about-text">
-            Me apasiona crear soluciones 
-            digitales que resuelvan problemas reales. Mi enfoque combina la precisión técnica 
-            con un ojo agudo para el diseño, buscando siempre soluciones elegantes a problemas complejos.
+            {t(lang, 'about.text')}
           </p>
         </div>
         
-        <!-- Minimalist Stats -->
-        <div class="about-stats-mini">
+        <!-- Minimalist Stats with Counter Animation -->
+        <div class="about-stats-mini" id="stats-container">
           <div class="stat-item">
-            <span class="stat-val">10+</span>
-            <span class="stat-lbl">Tecnologías</span>
+            <span class="stat-val" data-target="10" data-suffix="+">0</span>
+            <span class="stat-lbl">{t(lang, 'about.stats.tech')}</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-val">5+</span>
-            <span class="stat-lbl">Proyectos</span>
+            <span class="stat-val" data-target="5" data-suffix="+">0</span>
+            <span class="stat-lbl">{t(lang, 'about.stats.projects')}</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-val">100%</span>
-            <span class="stat-lbl">Compromiso</span>
+            <span class="stat-val" data-target="100" data-suffix="%">0</span>
+            <span class="stat-lbl">{t(lang, 'about.stats.commitment')}</span>
           </div>
         </div>
       </div>
@@ -343,3 +348,48 @@
     }
   }
 </style>
+
+<script>
+  const statsContainer = document.getElementById('stats-container');
+  const statValues = document.querySelectorAll('.stat-val[data-target]');
+  let animated = false;
+  
+  function animateCounters() {
+    if (animated) return;
+    animated = true;
+    
+    statValues.forEach(stat => {
+      const target = parseInt(stat.getAttribute('data-target') || '0');
+      const suffix = stat.getAttribute('data-suffix') || '';
+      const duration = 2000;
+      const increment = target / (duration / 16);
+      let current = 0;
+      
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          stat.textContent = Math.floor(current) + suffix;
+          requestAnimationFrame(updateCounter);
+        } else {
+          stat.textContent = target + suffix;
+        }
+      };
+      
+      updateCounter();
+    });
+  }
+  
+  // Intersection Observer to trigger animation when visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  if (statsContainer) {
+    observer.observe(statsContainer);
+  }
+</script>

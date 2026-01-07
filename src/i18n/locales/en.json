@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "Ronald Davila | Full Stack Developer",
+    "description": "Systems Engineer and Full Stack Developer specialized in Node.js, NestJS, React and Python. Portfolio of projects and professional experience."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Me",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi! I'm",
+    "name": "Ronald",
+    "lastName": "Davila",
+    "description": "I transform ideas into scalable and efficient digital solutions.",
+    "cta_projects": "View Projects",
+    "cta_contact": "Contact Me",
+    "cta_cv": "Download CV",
+    "scroll": "Scroll",
+    "typing_words": ["Full Stack Developer", "Node.js Expert", "React Developer", "Python Enthusiast", "NestJS Specialist"]
+  },
+  "about": {
+    "label": "About Me",
+    "title": "Designing the future",
+    "subtitle": "line by line.",
+    "text": "I'm passionate about creating digital solutions that solve real problems. My approach combines technical precision with a keen eye for design, always seeking elegant solutions to complex problems.",
+    "badge": "Full Stack Developer",
+    "stats": {
+      "tech": "Technologies",
+      "tech_value": "10+",
+      "projects": "Projects",
+      "projects_value": "5+",
+      "commitment": "Commitment",
+      "commitment_value": "100%"
+    }
+  },
+  "skills": {
+    "label": "Skills",
+    "title": "Tech",
+    "title_highlight": "Stack"
+  },
+  "experience": {
+    "title": "Work",
+    "title_highlight": "Experience",
+    "description": "A career focused on creating scalable solutions. Here I present my professional journey and key developed projects.",
+    "role": "IT Support & Software Development",
+    "company": "ESCIENZA E.I.R.L.",
+    "period": "May 2025 – December 2025",
+    "projects": {
+      "cuadres": {
+        "title": "Financial Reconciliation System",
+        "description": "Automation of bank reconciliations and monthly reports."
+      },
+      "custom": {
+        "title": "Custom System",
+        "description": "Web platform for real-time stock, sales and distribution management."
+      },
+      "web": {
+        "title": "Corporate Website Redesign",
+        "description": "Modernization of ESCIENZA's website with focus on UX/UI and SEO optimization."
+      }
+    }
+  },
+  "projects": {
+    "label": "Portfolio",
+    "title": "Featured",
+    "title_highlight": "Projects",
+    "description": "Exploring complex digital solutions. Below, the technical details of my most recent project.",
+    "featured": {
+      "name": "RestCabaña",
+      "subtitle": "Restaurant Management System",
+      "description": "Complete mobile application for comprehensive restaurant management. Includes inventory control, order management, sales reports and staff administration.",
+      "features": {
+        "inventory": "Inventory",
+        "orders": "Orders",
+        "reports": "Reports",
+        "staff": "Staff"
+      },
+      "cta_demo": "View Demo",
+      "cta_code": "Code"
+    }
+  },
+  "contact": {
+    "badge": "Available for projects",
+    "title": "Let's Work",
+    "title_highlight": "Together",
+    "description": "Do you have a project in mind? I'd love to hear your ideas and explore how I can help you make them a reality.",
+    "info": {
+      "email_label": "Email",
+      "phone_label": "Phone",
+      "location_label": "Location",
+      "location": "Barranca, Lima - Peru"
+    },
+    "social": {
+      "title": "Follow Me"
+    },
+    "form": {
+      "name": "Name",
+      "name_placeholder": "Your name",
+      "email": "Email",
+      "email_placeholder": "your@email.com",
+      "message": "Message",
+      "message_placeholder": "Tell me about your project...",
+      "submit": "Send Message"
+    }
+  },
+  "footer": {
+    "copyright": "Ronald Davila. All rights reserved.",
+    "made_with": "Made with"
+  },
+  "loader": {
+    "text": "Loading"
+  }
+}

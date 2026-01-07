@@ -1,5 +1,12 @@
 ---
 // Hero Section with diamond frame and floating tech badges
+import { t, tArray, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'es' } = Astro.props;
 ---
 
 <section class="hero" id="hero">
@@ -7,13 +14,15 @@
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="grid-pattern"></div>
+    <!-- Code Rain Background -->
+    <canvas id="code-rain" class="code-rain"></canvas>
   </div>
   
   <div class="container hero-content">
     <div class="hero-text">
-      <p class="hero-greeting">¡Hola! Soy</p>
+      <p class="hero-greeting">{t(lang, 'hero.greeting')}</p>
       <h1 class="hero-title">
-        Ronald <span class="gradient-text">Davila</span>
+        {t(lang, 'hero.name')} <span class="gradient-text">{t(lang, 'hero.lastName')}</span>
       </h1>
       <h2 class="hero-subtitle">
         <span class="typing-wrapper">
@@ -22,7 +31,7 @@
         </span>
       </h2>
       <p class="hero-description">
-        Transformo ideas en soluciones digitales escalables y eficientes.
+        {t(lang, 'hero.description')}
       </p>
       
       <div class="hero-buttons">
@@ -30,14 +39,14 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/>
           </svg>
-          Ver Proyectos
+          {t(lang, 'hero.cta_projects')}
         </a>
         <a href="#contact" class="btn btn-outline">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
             <polyline points="22,6 12,13 2,6"/>
           </svg>
-          Contáctame
+          {t(lang, 'hero.cta_contact')}
         </a>
         <a href="/CV - Ronald Davila Medina.pdf" download class="btn btn-outline">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -45,7 +54,7 @@
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          Descargar CV
+          {t(lang, 'hero.cta_cv')}
         </a>
       </div>
       
@@ -60,7 +69,7 @@
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
           </svg>
         </a>
-        <a href="mailto:contactos.ronalddm@gmail.com" class="social-link" aria-label="Email">
+        <a href="mailto:contactos.ronald2209@gmail.com" class="social-link" aria-label="Email">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
             <polyline points="22,6 12,13 2,6"/>
@@ -70,37 +79,30 @@
     </div>
     
     <div class="hero-visual">
-      <!-- Diamond Frame -->
-      <div class="diamond-frame">
-        <div class="diamond-border"></div>
-        <div class="diamond-glow"></div>
+      <!-- Logo with Particles -->
+      <div class="logo-container">
+        <div class="particles" id="particles"></div>
+        <div class="hero-image-wrapper">
+          <img src="/logo2.png" alt="Ronald Davila Logo" class="hero-image">
+        </div>
+        <!-- Dynamic Shadow -->
+        <div class="logo-shadow"></div>
       </div>
       
-      <div class="hero-image-wrapper">
-        <img src="/logo.png" alt="Ronald Davila Logo" class="hero-image">
-      </div>
-      
-      <!-- Floating Tech Badges -->
-      <div class="floating-elements">
-        <div class="floating-badge badge-1" style="--badge-color: #5FA04E">
-          <img src="/icons/nodedotjs.svg" alt="Node.js" class="badge-icon" />
-          <span class="badge-text">Node.js</span>
+      <!-- Mini Terminal -->
+      <div class="mini-terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">terminal</span>
         </div>
-        <div class="floating-badge badge-2" style="--badge-color: #61DAFB">
-          <img src="/icons/react.svg" alt="React" class="badge-icon" />
-          <span class="badge-text">React</span>
-        </div>
-        <div class="floating-badge badge-3" style="--badge-color: #3776AB">
-          <img src="/icons/python.svg" alt="Python" class="badge-icon" />
-          <span class="badge-text">Python</span>
-        </div>
-        <div class="floating-badge badge-4" style="--badge-color: #3178C6">
-          <img src="/icons/typescript.svg" alt="TypeScript" class="badge-icon" />
-          <span class="badge-text">TypeScript</span>
-        </div>
-        <div class="floating-badge badge-5" style="--badge-color: #E0234E">
-          <img src="/icons/nestjs.svg" alt="NestJS" class="badge-icon" />
-          <span class="badge-text">NestJS</span>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="prompt">$</span>
+            <span class="command" id="terminal-command"></span>
+            <span class="cursor">_</span>
+          </div>
         </div>
       </div>
     </div>
@@ -110,7 +112,7 @@
     <div class="scroll-mouse">
       <div class="scroll-wheel"></div>
     </div>
-    <span>Scroll</span>
+    <span>{t(lang, 'hero.scroll')}</span>
   </a>
 </section>
 
@@ -216,50 +218,89 @@
     box-shadow: var(--shadow-glow);
   }
   
-  /* Hero Visual with Diamond Frame */
+  /* Hero Visual with Logo and Effects */
   .hero-visual {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     animation: fadeInRight 1s ease-out 0.3s both;
     min-height: 500px;
+    gap: 2rem;
   }
   
-  /* Diamond Frame */
-  .diamond-frame {
-    position: absolute;
-    width: 380px;
-    height: 380px;
-    transform: rotate(45deg);
-  }
-  
-  .diamond-border {
+  /* Code Rain Background */
+  .code-rain {
     position: absolute;
     inset: 0;
-    border: 2px solid;
-    border-image: linear-gradient(135deg, var(--color-primary), var(--color-accent)) 1;
-    opacity: 0.6;
-    animation: pulse-border 3s ease-in-out infinite;
+    opacity: 0.15;
+    pointer-events: none;
   }
   
-  .diamond-glow {
+  /* Logo Container with Particles */
+  .logo-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .particles {
     position: absolute;
-    inset: -20px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    opacity: 0.1;
-    filter: blur(40px);
+    width: 400px;
+    height: 400px;
+    pointer-events: none;
   }
   
-  @keyframes pulse-border {
-    0%, 100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 0.3; transform: scale(1.02); }
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    opacity: 0.6;
+    animation: particle-float 3s ease-in-out infinite;
   }
   
+  .particle:nth-child(odd) {
+    background: var(--color-accent);
+  }
+  
+  @keyframes particle-float {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+    50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+  }
+  
+  /* Dynamic Rhombus Shadow */
+  .logo-shadow {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%) rotateX(80deg);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(ellipse, rgba(13, 148, 136, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: shadow-pulse 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes shadow-pulse {
+    0%, 100% { 
+      transform: translateX(-50%) scale(1);
+      opacity: 0.4;
+    }
+    50% { 
+      transform: translateX(-50%) scale(0.85);
+      opacity: 0.2;
+    }
+  }
+
   .hero-image-wrapper {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     z-index: 2;
   }
   
@@ -267,55 +308,89 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 20px 40px rgba(13, 148, 136, 0.3));
-    animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.4));
+    animation: logo-float 4s ease-in-out infinite;
   }
   
-  /* Floating Badges */
-  .floating-elements {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+  @keyframes logo-float {
+    0%, 100% { 
+      transform: translateY(0);
+    }
+    50% { 
+      transform: translateY(-20px);
+    }
   }
   
-  .floating-badge {
+  /* Mini Terminal */
+  .mini-terminal {
     position: absolute;
+    bottom: 40px;
+    right: -60px;
+    width: 280px;
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-dark-muted);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    animation: fadeInUp 1s ease-out 0.8s both;
+  }
+  
+  .terminal-header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.625rem 1rem;
-    background: var(--color-dark-soft);
-    border-radius: var(--radius-full);
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-    border: 1px solid var(--color-dark-muted);
-    transition: all var(--transition-base);
-    --badge-color: var(--color-primary);
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--color-dark-muted);
   }
   
-  .floating-badge:hover {
-    border-color: var(--badge-color);
-    box-shadow: 0 0 20px -5px var(--badge-color);
-    transform: scale(1.05);
-    pointer-events: auto;
+  .terminal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
   }
   
-  .badge-icon {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
+  .terminal-dot.red { background: #ff5f56; }
+  .terminal-dot.yellow { background: #ffbd2e; }
+  .terminal-dot.green { background: #27ca40; }
+  
+  .terminal-title {
+    margin-left: auto;
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
   }
   
-  .badge-text {
-    font-size: 0.875rem;
+  .terminal-body {
+    padding: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+  
+  .terminal-line {
+    display: flex;
+    gap: 0.5rem;
+    color: var(--color-text-muted);
+  }
+  
+  .prompt {
+    color: var(--color-primary);
     font-weight: 600;
+  }
+  
+  .command {
     color: var(--color-light);
   }
   
-  .badge-1 { top: 5%; right: 15%; animation: float 5s ease-in-out infinite; }
-  .badge-2 { bottom: 30%; left: -5%; animation: float 6s ease-in-out infinite 0.5s; }
-  .badge-3 { bottom: 15%; right: 5%; animation: float 5.5s ease-in-out infinite 1s; }
-  .badge-4 { top: 25%; left: 0%; animation: float 6.5s ease-in-out infinite 1.5s; }
-  .badge-5 { top: 45%; right: -5%; animation: float 5s ease-in-out infinite 2s; }
+  .cursor {
+    color: var(--color-primary);
+    animation: blink 1s step-end infinite;
+  }
+  
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
   
   /* Scroll Indicator */
   .scroll-indicator {
@@ -364,24 +439,27 @@
   @media (max-width: 900px) {
     .hero-content { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
     .hero-text { order: 2; }
-    .hero-visual { order: 1; min-height: 400px; }
+    .hero-visual { order: 1; min-height: 350px; }
     .hero-description { margin: 0 auto 2rem; }
     .hero-buttons { justify-content: center; }
     .hero-social { justify-content: center; }
-    .hero-image-wrapper { width: 250px; height: 250px; }
-    .diamond-frame { width: 320px; height: 320px; }
-    .floating-badge { display: none; }
+    .hero-image-wrapper { width: 200px; height: 200px; }
+    .mini-terminal { display: none; }
+    .logo-glow { width: 280px; height: 280px; }
+    .particles { width: 300px; height: 300px; }
   }
   
   @media (max-width: 480px) {
-    .hero-image-wrapper { width: 200px; height: 200px; }
-    .diamond-frame { width: 260px; height: 260px; }
+    .hero-image-wrapper { width: 160px; height: 160px; }
     .hero-buttons { flex-direction: column; }
     .btn { width: 100%; }
+    .logo-glow { width: 220px; height: 220px; }
+    .particles { width: 240px; height: 240px; }
   }
 </style>
 
 <script>
+  // Typing effect for hero subtitle
   const typingText = document.getElementById('typing-text');
   const words = ['Full Stack Developer', 'Node.js Expert', 'React Developer', 'Python Enthusiast', 'NestJS Specialist'];
   let wordIndex = 0;
@@ -414,4 +492,108 @@
   }
   
   typeEffect();
+  
+  // Create particles around logo
+  const particlesContainer = document.getElementById('particles');
+  if (particlesContainer) {
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      const angle = (i / 20) * Math.PI * 2;
+      const radius = 150 + Math.random() * 50;
+      const x = 200 + Math.cos(angle) * radius;
+      const y = 200 + Math.sin(angle) * radius;
+      particle.style.left = x + 'px';
+      particle.style.top = y + 'px';
+      particle.style.animationDelay = (i * 0.15) + 's';
+      particle.style.width = (3 + Math.random() * 3) + 'px';
+      particle.style.height = particle.style.width;
+      particlesContainer.appendChild(particle);
+    }
+  }
+  
+  // Mini terminal typing effect
+  const terminalCommand = document.getElementById('terminal-command');
+  const commands = [
+    'npm run dev',
+    'git push origin main',
+    'docker compose up',
+    'pnpm install',
+    'npx prisma migrate'
+  ];
+  let cmdIndex = 0;
+  let cmdCharIndex = 0;
+  let cmdIsDeleting = false;
+  
+  function typeTerminal() {
+    const currentCmd = commands[cmdIndex];
+    
+    if (cmdIsDeleting) {
+      if (terminalCommand) terminalCommand.textContent = currentCmd.substring(0, cmdCharIndex - 1);
+      cmdCharIndex--;
+    } else {
+      if (terminalCommand) terminalCommand.textContent = currentCmd.substring(0, cmdCharIndex + 1);
+      cmdCharIndex++;
+    }
+    
+    let speed = cmdIsDeleting ? 30 : 80;
+    
+    if (!cmdIsDeleting && cmdCharIndex === currentCmd.length) {
+      speed = 3000;
+      cmdIsDeleting = true;
+    } else if (cmdIsDeleting && cmdCharIndex === 0) {
+      cmdIsDeleting = false;
+      cmdIndex = (cmdIndex + 1) % commands.length;
+      speed = 500;
+    }
+    
+    setTimeout(typeTerminal, speed);
+  }
+  
+  typeTerminal();
+  
+  // Code Rain effect on canvas
+  const canvas = document.getElementById('code-rain') as HTMLCanvasElement;
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ</>{}[]';
+      const fontSize = 14;
+      const columns = canvas.width / fontSize;
+      const drops: number[] = [];
+      
+      for (let i = 0; i < columns; i++) {
+        drops[i] = Math.random() * -100;
+      }
+      
+      function draw() {
+        if (!ctx) return;
+        ctx.fillStyle = 'rgba(8, 15, 29, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = 'rgba(13, 148, 136, 0.5)';
+        ctx.font = fontSize + 'px monospace';
+        
+        for (let i = 0; i < drops.length; i++) {
+          const char = chars[Math.floor(Math.random() * chars.length)];
+          ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+          
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i] += 0.3;
+        }
+      }
+      
+      setInterval(draw, 50);
+      
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    }
+  }
 </script>

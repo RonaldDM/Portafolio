@@ -1,28 +1,39 @@
 ---
-// Navigation Component with sticky effect and mobile menu
+// Navigation Component with sticky effect, mobile menu, and language switcher
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'es' } = Astro.props;
 ---
 
 <nav class="navbar" id="navbar">
   <div class="navbar-container">
     <a href="#hero" class="navbar-logo">
-      <img src="/logo.png" alt="RD Logo" class="logo-img">
+      <img src="/logo2.png" alt="RD Logo" class="logo-img">
       <span class="logo-text">Ronald<span class="gradient-text">DM</span></span>
     </a>
     
     <ul class="navbar-menu" id="navbar-menu">
-      <li><a href="#hero" class="nav-link active">Inicio</a></li>
-      <li><a href="#about" class="nav-link">Sobre Mí</a></li>
-      <li><a href="#skills" class="nav-link">Habilidades</a></li>
-      <li><a href="#experience" class="nav-link">Experiencia</a></li>
-      <li><a href="#projects" class="nav-link">Proyectos</a></li>
-      <li><a href="#contact" class="nav-link">Contacto</a></li>
+      <li><a href="#hero" class="nav-link active">{t(lang, 'nav.home')}</a></li>
+      <li><a href="#about" class="nav-link">{t(lang, 'nav.about')}</a></li>
+      <li><a href="#skills" class="nav-link">{t(lang, 'nav.skills')}</a></li>
+      <li><a href="#experience" class="nav-link">{t(lang, 'nav.experience')}</a></li>
+      <li><a href="#projects" class="nav-link">{t(lang, 'nav.projects')}</a></li>
+      <li><a href="#contact" class="nav-link">{t(lang, 'nav.contact')}</a></li>
     </ul>
     
-    <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <div class="navbar-actions">
+      <LanguageSwitcher lang={lang} />
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -112,9 +123,10 @@
     width: 100%;
   }
   
-  .navbar-cta {
-    padding: 0.625rem 1.5rem;
-    font-size: 0.9rem;
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
   
   .navbar-toggle {
@@ -153,10 +165,6 @@
     
     .nav-link {
       font-size: 1.5rem;
-    }
-    
-    .navbar-cta {
-      display: none;
     }
     
     .navbar-toggle {

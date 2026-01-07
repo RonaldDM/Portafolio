@@ -1,12 +1,19 @@
 ---
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'es' } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="container">
     <div class="footer-bottom">
-      <p>&copy; {currentYear} Ronald Davila. Todos los derechos reservados.</p>
-      <p class="made-with">Hecho con <span class="gradient-text">Astro</span></p>
+      <p>&copy; {currentYear} {t(lang, 'footer.copyright')}</p>
+      <p class="made-with">{t(lang, 'footer.made_with')} <span class="gradient-text">Astro</span></p>
     </div>
   </div>
 </footer>

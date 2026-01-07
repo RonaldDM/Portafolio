@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "Ronald Davila | Full Stack Developer",
+    "description": "Ingeniero de Sistemas y Desarrollador Full Stack especializado en Node.js, NestJS, React y Python. Portfolio de proyectos y experiencia profesional."
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "skills": "Habilidades",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "¡Hola! Soy",
+    "name": "Ronald",
+    "lastName": "Davila",
+    "description": "Transformo ideas en soluciones digitales escalables y eficientes.",
+    "cta_projects": "Ver Proyectos",
+    "cta_contact": "Contáctame",
+    "cta_cv": "Descargar CV",
+    "scroll": "Scroll",
+    "typing_words": ["Full Stack Developer", "Node.js Expert", "React Developer", "Python Enthusiast", "NestJS Specialist"]
+  },
+  "about": {
+    "label": "Sobre Mí",
+    "title": "Diseñando el futuro",
+    "subtitle": "línea por línea.",
+    "text": "Me apasiona crear soluciones digitales que resuelvan problemas reales. Mi enfoque combina la precisión técnica con un ojo agudo para el diseño, buscando siempre soluciones elegantes a problemas complejos.",
+    "badge": "Full Stack Developer",
+    "stats": {
+      "tech": "Tecnologías",
+      "tech_value": "10+",
+      "projects": "Proyectos",
+      "projects_value": "5+",
+      "commitment": "Compromiso",
+      "commitment_value": "100%"
+    }
+  },
+  "skills": {
+    "label": "Habilidades",
+    "title": "Stack",
+    "title_highlight": "Tecnológico"
+  },
+  "experience": {
+    "title": "Experiencia",
+    "title_highlight": "Laboral",
+    "description": "Una trayectoria enfocada en crear soluciones escalables. Aquí presento mi recorrido profesional y los proyectos clave desarrollados.",
+    "role": "Soporte TI y Desarrollo de Software",
+    "company": "ESCIENZA E.I.R.L.",
+    "period": "Mayo 2025 – Diciembre 2025",
+    "projects": {
+      "cuadres": {
+        "title": "Sistema de Cuadres Financieros",
+        "description": "Automatización de conciliaciones bancarias y reportes mensuales."
+      },
+      "custom": {
+        "title": "Sistema Personalizado",
+        "description": "Plataforma web para gestión de stock, ventas y distribución en tiempo real."
+      },
+      "web": {
+        "title": "Rediseño Web Corporativo",
+        "description": "Modernización del sitio web de ESCIENZA con enfoque en UX/UI y optimización SEO."
+      }
+    }
+  },
+  "projects": {
+    "label": "Portafolio",
+    "title": "Proyectos",
+    "title_highlight": "Destacados",
+    "description": "Explorando soluciones digitales complejas. A continuación, el detalle técnico de mi proyecto más reciente.",
+    "featured": {
+      "name": "RestCabaña",
+      "subtitle": "Sistema de Gestión para Restaurantes",
+      "description": "Aplicación móvil completa para la gestión integral de restaurantes. Incluye control de inventario, gestión de pedidos, reportes de ventas y administración de personal.",
+      "features": {
+        "inventory": "Inventario",
+        "orders": "Pedidos",
+        "reports": "Reportes",
+        "staff": "Personal"
+      },
+      "cta_demo": "Ver Demo",
+      "cta_code": "Código"
+    }
+  },
+  "contact": {
+    "badge": "Disponible para proyectos",
+    "title": "Trabajemos",
+    "title_highlight": "Juntos",
+    "description": "¿Tienes un proyecto en mente? Me encantaría escuchar tus ideas y explorar cómo puedo ayudarte a hacerlas realidad.",
+    "info": {
+      "email_label": "Email",
+      "phone_label": "Teléfono",
+      "location_label": "Ubicación",
+      "location": "Barranca, Lima - Perú"
+    },
+    "social": {
+      "title": "Sígueme"
+    },
+    "form": {
+      "name": "Nombre",
+      "name_placeholder": "Tu nombre",
+      "email": "Email",
+      "email_placeholder": "tu@email.com",
+      "message": "Mensaje",
+      "message_placeholder": "Cuéntame sobre tu proyecto...",
+      "submit": "Enviar Mensaje"
+    }
+  },
+  "footer": {
+    "copyright": "Ronald Davila. Todos los derechos reservados.",
+    "made_with": "Hecho con"
+  },
+  "loader": {
+    "text": "Cargando"
+  }
+}
