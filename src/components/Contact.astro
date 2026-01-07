@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { lang = 'es' } = Astro.props;
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
 ---
 
 <section class="contact section" id="contact">
@@ -61,11 +62,44 @@ const { lang = 'es' } = Astro.props;
           </div>
         </div>
       </div>
-      
       <!-- Right Column: Form -->
-      <div class="contact-form-wrapper reveal-right">
+      <div class="contact-form-wrapper reveal-right" id="form-wrapper">
         <div class="form-glow"></div>
-        <form class="contact-form" id="contact-form">
+        
+        <!-- Success Overlay with Blur -->
+        <div class="success-overlay" id="success-overlay">
+          <div class="success-content">
+            <div class="check-circle">
+              <svg class="check-svg" viewBox="0 0 52 52">
+                <circle class="check-circle-bg" cx="26" cy="26" r="25" fill="none"/>
+                <circle class="check-circle-line" cx="26" cy="26" r="25" fill="none"/>
+                <path class="check-mark" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+              </svg>
+            </div>
+            <h3 class="success-title">{lang === 'es' ? '¡Mensaje enviado!' : 'Message sent!'}</h3>
+            <p class="success-text">{lang === 'es' ? 'Gracias por contactarme. Te responderé pronto.' : 'Thanks for reaching out. I\'ll get back to you soon.'}</p>
+          </div>
+        </div>
+        
+        <!-- Error Message -->
+        <div class="form-status error" id="form-error">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="15" y1="9" x2="9" y2="15"/>
+            <line x1="9" y1="9" x2="15" y2="15"/>
+          </svg>
+          <h3>{lang === 'es' ? 'Error al enviar' : 'Failed to send'}</h3>
+          <p>{lang === 'es' ? 'Hubo un problema. Intenta de nuevo o escríbeme directamente.' : 'Something went wrong. Try again or email me directly.'}</p>
+        </div>
+        
+        <form class="contact-form" id="contact-form" data-lang={lang}>
+          <!-- Web3Forms Hidden Fields -->
+          <input type="hidden" name="access_key" value={web3formsKey}>
+          <input type="hidden" name="subject" value="Nuevo mensaje desde Portfolio - Ronald Davila">
+          <input type="hidden" name="from_name" value="Portfolio Contact Form">
+          <!-- Honeypot for spam protection -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+          
           <div class="form-row">
             <div class="form-group">
               <label for="name">{t(lang, 'contact.form.name')}</label>
@@ -90,17 +124,17 @@ const { lang = 'es' } = Astro.props;
           </div>
           
           <div class="form-group">
-            <label for="subject">Asunto</label>
+            <label for="inquiry_type">{lang === 'es' ? 'Asunto' : 'Subject'}</label>
             <div class="input-wrapper">
               <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
                 <line x1="7" y1="7" x2="7.01" y2="7"/>
               </svg>
-              <select id="subject" name="subject">
-                <option>Consulta de Proyecto</option>
-                <option>Oportunidad Laboral</option>
-                <option>Colaboración</option>
-                <option>Otro</option>
+              <select id="inquiry_type" name="inquiry_type">
+                <option value="Consulta de Proyecto">{lang === 'es' ? 'Consulta de Proyecto' : 'Project Inquiry'}</option>
+                <option value="Oportunidad Laboral">{lang === 'es' ? 'Oportunidad Laboral' : 'Job Opportunity'}</option>
+                <option value="Colaboración">{lang === 'es' ? 'Colaboración' : 'Collaboration'}</option>
+                <option value="Otro">{lang === 'es' ? 'Otro' : 'Other'}</option>
               </select>
               <svg class="select-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"/>
@@ -113,8 +147,9 @@ const { lang = 'es' } = Astro.props;
             <textarea id="message" name="message" rows="5" placeholder={t(lang, 'contact.form.message_placeholder')} required></textarea>
           </div>
           
-          <button type="submit" class="btn btn-primary btn-submit">
-            <span>{t(lang, 'contact.form.submit')}</span>
+          <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+            <span class="btn-text">{t(lang, 'contact.form.submit')}</span>
+            <span class="btn-loading">{lang === 'es' ? 'Enviando...' : 'Sending...'}</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="22" y1="2" x2="11" y2="13"/>
               <polygon points="22 2 15 22 11 13 2 9 22 2"/>
@@ -402,4 +437,384 @@ const { lang = 'es' } = Astro.props;
       font-size: 1.75rem;
     }
   }
+  
+  /* Form Status Messages */
+  .form-status {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    gap: 1rem;
+  }
+  
+  .form-status.show {
+    display: flex;
+  }
+  
+  .form-status.success svg {
+    color: #27ca40;
+  }
+  
+  .form-status.error svg {
+    color: #ff5f56;
+  }
+  
+  .form-status h3 {
+    font-size: 1.5rem;
+    color: var(--color-light);
+    margin: 0;
+  }
+  
+  .form-status p {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+  }
+  
+  /* Button Loading State */
+  .btn-loading {
+    display: none;
+  }
+  
+  .btn-submit.loading .btn-text {
+    display: none;
+  }
+  
+  .btn-submit.loading .btn-loading {
+    display: inline;
+  }
+  
+  .btn-submit.loading svg {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Hide form when showing status */
+  .contact-form.hidden {
+    display: none;
+  }
+  
+  /* Demo Icons */
+  .demo-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--color-dark-muted);
+  }
+  
+  .demo-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+  }
+  
+  .demo-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--color-dark-soft);
+    border: 1px solid var(--color-dark-muted);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+  }
+  
+  .demo-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+  
+  /* Success Overlay */
+  .success-overlay {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-xl);
+    z-index: 15;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+  }
+  
+  .success-overlay.show {
+    display: flex;
+    animation: overlay-fade-in 0.4s ease-out;
+  }
+  
+  @keyframes overlay-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Success Content */
+  .success-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    animation: content-pop 0.5s ease-out 0.2s both;
+  }
+  
+  @keyframes content-pop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  .success-title {
+    font-size: 1.5rem;
+    color: var(--color-light);
+    margin: 0;
+  }
+  
+  .success-text {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  /* Blur Active State */
+  .contact-form-wrapper.blur-active .contact-form,
+  .contact-form-wrapper.blur-active .form-glow {
+    filter: blur(6px);
+    pointer-events: none;
+    transition: filter 0.3s ease-out;
+  }
+  
+  /* Keep form wrapper size */
+  .contact-form-wrapper {
+    position: relative;
+    min-height: 450px;
+  }
+  
+  .contact-form.hidden {
+    visibility: hidden;
+    position: absolute;
+    opacity: 0;
+  }
+  
+  /* Envelope Animation */
+  .animation-envelope,
+  .animation-check,
+  .animation-confetti {
+    display: none;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .animation-envelope.active,
+  .animation-check.active,
+  .animation-confetti.active {
+    display: flex;
+  }
+  
+  .envelope {
+    position: relative;
+    width: 100px;
+    height: 70px;
+    animation: envelope-fly 2s ease-out forwards;
+  }
+  
+  .envelope-back {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    border-radius: 4px;
+  }
+  
+  .envelope-front {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70%;
+    background: linear-gradient(180deg, #0d9488, #0a7c72);
+    border-radius: 0 0 4px 4px;
+    clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 100%, 0 100%);
+  }
+  
+  .envelope-letter {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 50px;
+    background: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: letter-pop 0.5s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+  
+  .envelope-letter svg {
+    color: var(--color-primary);
+  }
+  
+  .envelope-trail {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    border-radius: 2px;
+    opacity: 0;
+    animation: trail-show 1s ease-out 0.5s forwards;
+  }
+  
+  @keyframes envelope-fly {
+    0% { transform: scale(0.5) translateY(50px); opacity: 0; }
+    30% { transform: scale(1) translateY(0); opacity: 1; }
+    70% { transform: scale(1) translateY(0); opacity: 1; }
+    100% { transform: scale(0.8) translateY(-100px); opacity: 0; }
+  }
+  
+  @keyframes letter-pop {
+    0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+  
+  @keyframes trail-show {
+    0%, 50% { opacity: 0; width: 0; }
+    70% { opacity: 0.8; width: 80px; }
+    100% { opacity: 0; width: 120px; }
+  }
+  
+  /* Checkmark Animation */
+  .check-circle {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .check-svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .check-circle-bg {
+    stroke: var(--color-dark-muted);
+    stroke-width: 2;
+  }
+  
+  .check-circle-line {
+    stroke: var(--color-primary);
+    stroke-width: 2;
+    stroke-dasharray: 157;
+    stroke-dashoffset: 157;
+    animation: circle-draw 0.6s ease-out forwards;
+  }
+  
+  .check-mark {
+    stroke: var(--color-primary);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    animation: check-draw 0.4s ease-out 0.5s forwards;
+  }
+  
+  @keyframes circle-draw {
+    to { stroke-dashoffset: 0; }
+  }
+  
+  @keyframes check-draw {
+    to { stroke-dashoffset: 0; }
+  }
+  
+  /* Confetti Animation */
+  .confetti-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  .confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    left: 50%;
+    animation: confetti-explode 1s ease-out forwards;
+  }
+  
+  @keyframes confetti-explode {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  .success-icon {
+    animation: success-pop 0.5s ease-out forwards;
+  }
+  
+  .success-icon svg {
+    color: var(--color-primary);
+  }
+  
+  @keyframes success-pop {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+  }
 </style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn');
+  const errorDiv = document.getElementById('form-error');
+  const overlay = document.getElementById('success-overlay');
+  const formWrapper = document.getElementById('form-wrapper');
+  
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      submitBtn?.classList.add('loading');
+      
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          // Blur form and show success overlay
+          formWrapper?.classList.add('blur-active');
+          overlay?.classList.add('show');
+        } else {
+          form.classList.add('hidden');
+          errorDiv?.classList.add('show');
+        }
+      } catch (error) {
+        form.classList.add('hidden');
+        errorDiv?.classList.add('show');
+      } finally {
+        submitBtn?.classList.remove('loading');
+      }
+    });
+  }
+</script>
