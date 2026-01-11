@@ -668,13 +668,91 @@ const { lang = 'es' } = Astro.props;
   }
   
   @media (max-width: 600px) {
+    .projects {
+      padding: 50px 0;
+    }
+    
+    .projects-header {
+      margin-bottom: 2rem;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+    }
+    
     .projects-grid {
       grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    /* Compact carousel */
+    .carousel-container {
+      margin-bottom: 1.5rem;
+    }
+    
+    .carousel-wrapper {
+      height: 200px;
     }
     
     .carousel-arrow {
       width: 32px;
       height: 32px;
+    }
+    
+    /* Compact project info */
+    .project-info {
+      padding: 1rem;
+    }
+    
+    .project-name {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .project-description {
+      font-size: 0.8rem;
+      -webkit-line-clamp: 2;
+      margin-bottom: 0.75rem;
+    }
+    
+    .tech-stack {
+      margin-bottom: 0.75rem;
+    }
+    
+    .tech-stack-title {
+      font-size: 0.7rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .tech-tag {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.5rem;
+    }
+    
+    .project-links {
+      gap: 0.5rem;
+    }
+    
+    .project-links a {
+      font-size: 0.75rem;
+      padding: 0.5rem 1rem;
+    }
+    
+    /* Compact mini cards */
+    .mini-card {
+      padding: 1rem;
+    }
+    
+    .mini-title {
+      font-size: 0.9rem;
+    }
+    
+    .mini-description {
+      font-size: 0.8rem;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
 </style>

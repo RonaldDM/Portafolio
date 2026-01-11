@@ -301,12 +301,12 @@ const { lang = 'es' } = Astro.props;
   @media (max-width: 1024px) {
     .about-grid {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2rem;
       text-align: center;
     }
     
     .about-image-col {
-      max-width: 400px;
+      max-width: 280px;
       margin: 0 auto;
     }
     
@@ -330,17 +330,94 @@ const { lang = 'es' } = Astro.props;
   }
   
   @media (max-width: 600px) {
+    .about {
+      padding: 50px 0;
+    }
+    
+    /* Horizontal layout: image left, header right */
+    .about-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .about-image-col {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 100%;
+    }
+    
+    /* Small circular profile */
+    .image-wrapper {
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    
+    .profile-image {
+      border-radius: 50%;
+    }
+    
+    .image-gradient {
+      border-radius: 50%;
+    }
+    
+    .image-badge {
+      display: none;
+    }
+    
+    .image-border {
+      display: none;
+    }
+    
+    /* Header inline with image */
+    .about-content-col {
+      text-align: left;
+      align-items: flex-start;
+    }
+    
+    .section-label {
+      justify-content: flex-start;
+    }
+    
+    .about-header {
+      margin-bottom: 0;
+    }
+    
     .about-title {
-      font-size: 1.75rem;
+      font-size: 1.35rem;
+      line-height: 1.3;
     }
     
     .about-title br {
       display: none;
     }
     
+    .about-text {
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    
     .about-stats-mini {
-      flex-wrap: wrap;
-      gap: 1.5rem;
+      justify-content: space-between;
+      gap: 0.5rem;
+      width: 100%;
+    }
+    
+    .stat-item {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .stat-val {
+      font-size: 1.5rem;
+    }
+    
+    .stat-lbl {
+      font-size: 0.65rem;
     }
     
     .stat-divider {
