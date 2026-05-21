@@ -20,7 +20,13 @@
     "cta_contact": "Contáctame",
     "cta_cv": "Descargar CV",
     "scroll": "Scroll",
-    "typing_words": ["Full Stack Developer", "Node.js Expert", "React Developer", "Python Enthusiast", "NestJS Specialist"]
+    "typing_words": [
+      "Full Stack Developer",
+      "Node.js Expert",
+      "React Developer",
+      "Python Enthusiast",
+      "NestJS Specialist"
+    ]
   },
   "about": {
     "label": "Sobre Mí",

@@ -13,19 +13,31 @@ const { lang = 'es' } = Astro.props;
   <!-- Background Decorations -->
   <div class="about-bg-glow glow-1"></div>
   <div class="about-bg-glow glow-2"></div>
-  
+
   <div class="container">
     <div class="about-grid">
       <!-- Left Column: Image -->
       <div class="about-image-col reveal-left">
         <div class="image-wrapper">
           <div class="image-gradient"></div>
-          <img src="/profile.jpg" alt="Ronald Davila - Full Stack Developer" class="profile-image">
+          <img
+            src="/profile.jpg"
+            alt="Ronald Davila - Full Stack Developer"
+            class="profile-image"
+          />
           <!-- Floating Badge -->
           <div class="image-badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-              <polyline points="22 4 12 14.01 9 11.01"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
             <span>{t(lang, 'about.badge')}</span>
           </div>
@@ -33,7 +45,7 @@ const { lang = 'es' } = Astro.props;
         <!-- Decorative Border -->
         <div class="image-border"></div>
       </div>
-      
+
       <!-- Right Column: Content -->
       <div class="about-content-col reveal-right">
         <!-- Header -->
@@ -43,14 +55,15 @@ const { lang = 'es' } = Astro.props;
             <span class="label-text">{t(lang, 'about.label')}</span>
           </div>
           <h2 class="about-title">
-            {t(lang, 'about.title')} <br>
+            {t(lang, 'about.title')}
+            <br />
             <span class="text-muted">{t(lang, 'about.subtitle')}</span>
           </h2>
           <p class="about-text">
             {t(lang, 'about.text')}
           </p>
         </div>
-        
+
         <!-- Minimalist Stats with Counter Animation -->
         <div class="about-stats-mini" id="stats-container">
           <div class="stat-item">
@@ -79,14 +92,14 @@ const { lang = 'es' } = Astro.props;
     position: relative;
     overflow: hidden;
   }
-  
+
   /* Background Glows */
   .about-bg-glow {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
   }
-  
+
   .glow-1 {
     width: 400px;
     height: 400px;
@@ -95,7 +108,7 @@ const { lang = 'es' } = Astro.props;
     left: -100px;
     filter: blur(100px);
   }
-  
+
   .glow-2 {
     width: 350px;
     height: 350px;
@@ -104,7 +117,7 @@ const { lang = 'es' } = Astro.props;
     right: -100px;
     filter: blur(80px);
   }
-  
+
   /* Grid Layout */
   .about-grid {
     display: grid;
@@ -114,13 +127,13 @@ const { lang = 'es' } = Astro.props;
     position: relative;
     z-index: 1;
   }
-  
+
   /* Image Column */
   .about-image-col {
     position: relative;
     margin-top: 2rem;
   }
-  
+
   .image-wrapper {
     position: relative;
     width: 100%;
@@ -130,7 +143,7 @@ const { lang = 'es' } = Astro.props;
     border: 1px solid var(--color-dark-muted);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   }
-  
+
   .image-gradient {
     position: absolute;
     inset: 0;
@@ -138,18 +151,18 @@ const { lang = 'es' } = Astro.props;
     z-index: 2;
     pointer-events: none;
   }
-  
+
   .profile-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.7s ease;
   }
-  
+
   .image-wrapper:hover .profile-image {
     transform: scale(1.05);
   }
-  
+
   /* Floating Badge */
   .image-badge {
     position: absolute;
@@ -166,22 +179,22 @@ const { lang = 'es' } = Astro.props;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all var(--transition-base);
   }
-  
+
   .image-badge:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
   }
-  
+
   .image-badge svg {
     color: var(--color-primary);
   }
-  
+
   .image-badge span {
     color: white;
     font-size: 0.875rem;
     font-weight: 500;
   }
-  
+
   /* Decorative Border */
   .image-border {
     position: absolute;
@@ -194,11 +207,11 @@ const { lang = 'es' } = Astro.props;
     z-index: -1;
     transition: transform var(--transition-base);
   }
-  
+
   .about-image-col:hover .image-border {
     transform: translate(0.5rem, -0.5rem);
   }
-  
+
   /* Content Column */
   .about-content-col {
     display: flex;
@@ -206,11 +219,11 @@ const { lang = 'es' } = Astro.props;
     justify-content: center;
     padding-left: 1rem;
   }
-  
+
   .about-header {
     margin-bottom: 2rem;
   }
-  
+
   /* Section Label */
   .section-label {
     display: flex;
@@ -218,13 +231,13 @@ const { lang = 'es' } = Astro.props;
     gap: 0.75rem;
     margin-bottom: 1.25rem;
   }
-  
+
   .label-line {
     width: 2rem;
     height: 2px;
     background: var(--color-primary);
   }
-  
+
   .label-text {
     color: var(--color-primary);
     font-size: 0.8rem;
@@ -232,7 +245,7 @@ const { lang = 'es' } = Astro.props;
     text-transform: uppercase;
     letter-spacing: 2px;
   }
-  
+
   .about-title {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
@@ -240,11 +253,11 @@ const { lang = 'es' } = Astro.props;
     color: var(--color-light);
     margin-bottom: 1.5rem;
   }
-  
+
   .about-title .text-muted {
     color: var(--color-text-muted);
   }
-  
+
   .about-text {
     font-size: 1.1rem;
     color: var(--color-text-muted);
@@ -252,11 +265,11 @@ const { lang = 'es' } = Astro.props;
     max-width: 600px;
     margin-bottom: 0.5rem;
   }
-  
+
   .about-text strong {
     color: var(--color-light);
   }
-  
+
   /* Minimal Stats */
   .about-stats-mini {
     display: flex;
@@ -266,13 +279,13 @@ const { lang = 'es' } = Astro.props;
     padding-top: 2rem;
     border-top: 1px solid var(--color-dark-muted);
   }
-  
+
   .stat-item {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
   }
-  
+
   .stat-val {
     font-size: 2.5rem;
     font-weight: 800;
@@ -282,7 +295,7 @@ const { lang = 'es' } = Astro.props;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+
   .stat-lbl {
     font-size: 0.85rem;
     font-weight: 500;
@@ -290,13 +303,13 @@ const { lang = 'es' } = Astro.props;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
-  
+
   .stat-divider {
     width: 1px;
     height: 40px;
     background: var(--color-dark-muted);
   }
-  
+
   /* Responsive */
   @media (max-width: 1024px) {
     .about-grid {
@@ -304,50 +317,50 @@ const { lang = 'es' } = Astro.props;
       gap: 2rem;
       text-align: center;
     }
-    
+
     .about-image-col {
       max-width: 280px;
       margin: 0 auto;
     }
-    
+
     .about-content-col {
       padding-left: 0;
       align-items: center;
     }
-    
+
     .section-label {
       justify-content: center;
     }
-    
+
     .about-stats-mini {
       justify-content: center;
       gap: 2rem;
     }
-    
+
     .image-border {
       display: none;
     }
   }
-  
+
   @media (max-width: 600px) {
     .about {
       padding: 50px 0;
     }
-    
+
     /* Horizontal layout: image left, header right */
     .about-grid {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
     }
-    
+
     .about-image-col {
       display: flex;
       align-items: center;
       gap: 1rem;
       max-width: 100%;
     }
-    
+
     /* Small circular profile */
     .image-wrapper {
       width: 80px;
@@ -356,70 +369,70 @@ const { lang = 'es' } = Astro.props;
       border-radius: 50%;
       overflow: hidden;
     }
-    
+
     .profile-image {
       border-radius: 50%;
     }
-    
+
     .image-gradient {
       border-radius: 50%;
     }
-    
+
     .image-badge {
       display: none;
     }
-    
+
     .image-border {
       display: none;
     }
-    
+
     /* Header inline with image */
     .about-content-col {
       text-align: left;
       align-items: flex-start;
     }
-    
+
     .section-label {
       justify-content: flex-start;
     }
-    
+
     .about-header {
       margin-bottom: 0;
     }
-    
+
     .about-title {
       font-size: 1.35rem;
       line-height: 1.3;
     }
-    
+
     .about-title br {
       display: none;
     }
-    
+
     .about-text {
       font-size: 0.85rem;
       line-height: 1.6;
     }
-    
+
     .about-stats-mini {
       justify-content: space-between;
       gap: 0.5rem;
       width: 100%;
     }
-    
+
     .stat-item {
       flex: 1;
       text-align: center;
     }
-    
+
     .stat-val {
       font-size: 1.5rem;
     }
-    
+
     .stat-lbl {
       font-size: 0.65rem;
     }
-    
+
     .stat-divider {
       display: none;
     }
@@ -430,18 +443,18 @@ const { lang = 'es' } = Astro.props;
   const statsContainer = document.getElementById('stats-container');
   const statValues = document.querySelectorAll('.stat-val[data-target]');
   let animated = false;
-  
+
   function animateCounters() {
     if (animated) return;
     animated = true;
-    
-    statValues.forEach(stat => {
+
+    statValues.forEach((stat) => {
       const target = parseInt(stat.getAttribute('data-target') || '0');
       const suffix = stat.getAttribute('data-suffix') || '';
       const duration = 2000;
       const increment = target / (duration / 16);
       let current = 0;
-      
+
       const updateCounter = () => {
         current += increment;
         if (current < target) {
@@ -451,21 +464,24 @@ const { lang = 'es' } = Astro.props;
           stat.textContent = target + suffix;
         }
       };
-      
+
       updateCounter();
     });
   }
-  
+
   // Intersection Observer to trigger animation when visible
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounters();
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.5 });
-  
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.disconnect();
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
   if (statsContainer) {
     observer.observe(statsContainer);
   }

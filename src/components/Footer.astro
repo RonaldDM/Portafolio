@@ -13,7 +13,10 @@ const currentYear = new Date().getFullYear();
   <div class="container">
     <div class="footer-bottom">
       <p>&copy; {currentYear} {t(lang, 'footer.copyright')}</p>
-      <p class="made-with">{t(lang, 'footer.made_with')} <span class="gradient-text">Astro</span></p>
+      <p class="made-with">
+        {t(lang, 'footer.made_with')}
+        <span class="gradient-text">Astro</span>
+      </p>
     </div>
   </div>
 </footer>
@@ -24,7 +27,7 @@ const currentYear = new Date().getFullYear();
     border-top: 1px solid var(--color-dark-muted);
     padding: 1.5rem 0;
   }
-  
+
   .footer-bottom {
     display: flex;
     justify-content: space-between;
@@ -32,18 +35,18 @@ const currentYear = new Date().getFullYear();
     flex-wrap: wrap;
     gap: 1rem;
   }
-  
+
   .footer-bottom p {
     color: var(--color-text-muted);
     font-size: 0.9rem;
   }
-  
+
   .made-with {
     display: flex;
     align-items: center;
     gap: 0.25rem;
   }
-  
+
   @media (max-width: 600px) {
     .footer-bottom {
       flex-direction: column;

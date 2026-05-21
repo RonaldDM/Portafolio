@@ -9,21 +9,21 @@ interface Props {
 const { lang = 'es' } = Astro.props;
 
 const techIcons = [
-  { name: "JavaScript", icon: "/icons/javascript.svg", color: "#F7DF1E" },
-  { name: "TypeScript", icon: "/icons/typescript.svg", color: "#3178C6" },
-  { name: "Node.js", icon: "/icons/nodedotjs.svg", color: "#5FA04E" },
-  { name: "NestJS", icon: "/icons/nestjs.svg", color: "#E0234E" },
-  { name: "React", icon: "/icons/react.svg", color: "#61DAFB" },
-  { name: "Python", icon: "/icons/python.svg", color: "#3776AB" },
-  { name: "PHP", icon: "/icons/php.svg", color: "#777BB4" },
-  { name: "MySQL", icon: "/icons/mysql.svg", color: "#4479A1" },
-  { name: "PostgreSQL", icon: "/icons/postgresql.svg", color: "#4169E1" },
-  { name: "Firebase", icon: "/icons/firebase.svg", color: "#DD2C00" },
-  { name: "Docker", icon: "/icons/docker.svg", color: "#2496ED" },
-  { name: "GitHub", icon: "/icons/github.svg", color: "#ffffff" },
-  { name: "Tailwind", icon: "/icons/tailwindcss.svg", color: "#06B6D4" },
-  { name: "Astro", icon: "/icons/astro.svg", color: "#FF5D01" },
-  { name: "Prisma", icon: "/icons/prisma.svg", color: "#2D3748" },
+  { name: 'JavaScript', icon: '/icons/javascript.svg', color: '#F7DF1E' },
+  { name: 'TypeScript', icon: '/icons/typescript.svg', color: '#3178C6' },
+  { name: 'Node.js', icon: '/icons/nodedotjs.svg', color: '#5FA04E' },
+  { name: 'NestJS', icon: '/icons/nestjs.svg', color: '#E0234E' },
+  { name: 'React', icon: '/icons/react.svg', color: '#61DAFB' },
+  { name: 'Python', icon: '/icons/python.svg', color: '#3776AB' },
+  { name: 'PHP', icon: '/icons/php.svg', color: '#777BB4' },
+  { name: 'MySQL', icon: '/icons/mysql.svg', color: '#4479A1' },
+  { name: 'PostgreSQL', icon: '/icons/postgresql.svg', color: '#4169E1' },
+  { name: 'Firebase', icon: '/icons/firebase.svg', color: '#DD2C00' },
+  { name: 'Docker', icon: '/icons/docker.svg', color: '#2496ED' },
+  { name: 'GitHub', icon: '/icons/github.svg', color: '#ffffff' },
+  { name: 'Tailwind', icon: '/icons/tailwindcss.svg', color: '#06B6D4' },
+  { name: 'Astro', icon: '/icons/astro.svg', color: '#FF5D01' },
+  { name: 'Prisma', icon: '/icons/prisma.svg', color: '#2D3748' },
 ];
 ---
 
@@ -31,71 +31,103 @@ const techIcons = [
   <div class="container">
     <div class="section-header reveal">
       <p class="section-subtitle">{t(lang, 'skills.label')}</p>
-      <h2 class="section-title">{t(lang, 'skills.title')} <span class="gradient-text">{t(lang, 'skills.title_highlight')}</span></h2>
+      <h2 class="section-title">
+        {t(lang, 'skills.title')}
+        <span class="gradient-text">{t(lang, 'skills.title_highlight')}</span>
+      </h2>
     </div>
-    
+
     <!-- Tech Carousel -->
     <div class="tech-carousel reveal">
       <div class="tech-track">
-        {[...techIcons, ...techIcons].map((tech) => (
-          <div class="tech-item" style={`--brand-color: ${tech.color}`}>
-            <img src={tech.icon} alt={tech.name} class="tech-icon" />
-            <span class="tech-name">{tech.name}</span>
-          </div>
-        ))}
+        {
+          [...techIcons, ...techIcons].map((tech) => (
+            <div class="tech-item" style={`--brand-color: ${tech.color}`}>
+              <img src={tech.icon} alt={tech.name} class="tech-icon" />
+              <span class="tech-name">{tech.name}</span>
+            </div>
+          ))
+        }
       </div>
     </div>
-    
+
     <!-- Reverse Carousel -->
     <div class="tech-carousel reveal">
       <div class="tech-track reverse">
-        {[...techIcons, ...techIcons].map((tech) => (
-          <div class="tech-item" style={`--brand-color: ${tech.color}`}>
-            <img src={tech.icon} alt={tech.name} class="tech-icon" />
-            <span class="tech-name">{tech.name}</span>
-          </div>
-        ))}
+        {
+          [...techIcons, ...techIcons].map((tech) => (
+            <div class="tech-item" style={`--brand-color: ${tech.color}`}>
+              <img src={tech.icon} alt={tech.name} class="tech-icon" />
+              <span class="tech-name">{tech.name}</span>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .skills { background: var(--color-dark); overflow: hidden; }
-  
-  .tech-carousel { overflow: hidden; mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); margin-bottom: 1.5rem; }
-  .tech-track { display: flex; gap: 2rem; animation: scroll-tech 40s linear infinite; width: max-content; }
-  .tech-track.reverse { animation-direction: reverse; }
-  @keyframes scroll-tech { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-  
-  .tech-item { 
-    display: flex; 
-    align-items: center; 
-    gap: 0.75rem; 
-    padding: 0.875rem 1.5rem; 
-    background: var(--color-dark-soft); 
-    border-radius: var(--radius-full); 
-    border: 1px solid var(--color-dark-muted); 
+  .skills {
+    background: var(--color-dark);
+    overflow: hidden;
+  }
+
+  .tech-carousel {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+    margin-bottom: 1.5rem;
+  }
+  .tech-track {
+    display: flex;
+    gap: 2rem;
+    animation: scroll-tech 40s linear infinite;
+    width: max-content;
+  }
+  .tech-track.reverse {
+    animation-direction: reverse;
+  }
+  @keyframes scroll-tech {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .tech-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.5rem;
+    background: var(--color-dark-soft);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-dark-muted);
     transition: all var(--transition-base);
     --brand-color: #fff;
   }
-  
-  .tech-item:hover { 
-    border-color: var(--brand-color); 
-    transform: scale(1.05); 
+
+  .tech-item:hover {
+    border-color: var(--brand-color);
+    transform: scale(1.05);
     background: var(--color-dark);
     box-shadow: 0 0 20px -5px var(--brand-color);
   }
-  
-  .tech-icon { width: 28px; height: 28px; object-fit: contain; }
-  
-  .tech-name { 
-    font-weight: 600; 
-    color: var(--color-text); 
+
+  .tech-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  .tech-name {
+    font-weight: 600;
+    color: var(--color-text);
     white-space: nowrap;
     transition: color var(--transition-base);
   }
-  
+
   .tech-item:hover .tech-name {
     color: var(--brand-color);
   }

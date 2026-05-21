@@ -13,7 +13,7 @@ const { lang = 'es' } = Astro.props;
   <!-- Background Glows -->
   <div class="project-glow glow-1"></div>
   <div class="project-glow glow-2"></div>
-  
+
   <div class="container">
     <!-- Section Header -->
     <div class="section-header reveal">
@@ -21,9 +21,12 @@ const { lang = 'es' } = Astro.props;
         <span class="label-line"></span>
         <span class="label-text">{t(lang, 'projects.label')}</span>
       </div>
-      <h2 class="section-title">{t(lang, 'projects.title')} <span class="gradient-text">{t(lang, 'projects.title_highlight')}</span></h2>
+      <h2 class="section-title">
+        {t(lang, 'projects.title')}
+        <span class="gradient-text">{t(lang, 'projects.title_highlight')}</span>
+      </h2>
     </div>
-    
+
     <!-- Featured Project Card -->
     <article class="project-card reveal">
       <!-- Visual Column -->
@@ -31,65 +34,126 @@ const { lang = 'es' } = Astro.props;
         <!-- Screenshot Carousel -->
         <div class="screenshot-carousel">
           <div class="carousel-track" id="carousel-track">
-            <img src="/screenshots/restcabana_ss1.jpg" alt="RestCabaña Screenshot 1" class="carousel-slide active">
-            <img src="/screenshots/restcabana_ss2.jpg" alt="RestCabaña Screenshot 2" class="carousel-slide">
-            <img src="/screenshots/restcabana_ss3.jpg" alt="RestCabaña Screenshot 3" class="carousel-slide">
+            <img
+              src="/screenshots/restcabana_ss1.jpg"
+              alt="RestCabaña Screenshot 1"
+              class="carousel-slide active"
+              loading="eager"
+              width="640"
+              height="360"
+            />
+            <img
+              src="/screenshots/restcabana_ss2.jpg"
+              alt="RestCabaña Screenshot 2"
+              class="carousel-slide"
+              loading="lazy"
+              width="640"
+              height="360"
+            />
+            <img
+              src="/screenshots/restcabana_ss3.jpg"
+              alt="RestCabaña Screenshot 3"
+              class="carousel-slide"
+              loading="lazy"
+              width="640"
+              height="360"
+            />
           </div>
           <!-- Navigation Dots -->
           <div class="carousel-dots">
-            <button class="dot active" data-index="0"></button>
-            <button class="dot" data-index="1"></button>
-            <button class="dot" data-index="2"></button>
+            <button class="dot active" data-index="0" aria-label="Screenshot 1" aria-current="true"
+            ></button>
+            <button class="dot" data-index="1" aria-label="Screenshot 2"></button>
+            <button class="dot" data-index="2" aria-label="Screenshot 3"></button>
           </div>
           <!-- Navigation Arrows -->
-          <button class="carousel-arrow prev" id="carousel-prev">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="15 18 9 12 15 6"/>
+          <button class="carousel-arrow prev" id="carousel-prev" aria-label="Previous screenshot">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </button>
-          <button class="carousel-arrow next" id="carousel-next">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="9 18 15 12 9 6"/>
+          <button class="carousel-arrow next" id="carousel-next" aria-label="Next screenshot">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </button>
         </div>
         <!-- Glow Effect -->
         <div class="card-glow"></div>
       </div>
-      
+
       <!-- Content Column -->
       <div class="project-content">
         <div class="project-header">
-          <img src="/restcabana.png" alt="RestCabaña" class="project-logo">
+          <img src="/restcabana.png" alt="RestCabaña" class="project-logo" />
           <h3 class="project-title">RestCabaña</h3>
         </div>
-        
+
         <p class="project-description">
           {t(lang, 'projects.featured.subtitle')}. {t(lang, 'projects.featured.description')}
         </p>
-        
+
         <!-- Tech Stack -->
         <div class="tech-section">
           <span class="tech-label">Stack Tecnológico</span>
           <div class="tech-badges">
-            <span class="tech-badge"><span class="dot" style="background: #E0234E"></span>NestJS</span>
-            <span class="tech-badge"><span class="dot" style="background: #61DAFB"></span>React Native</span>
-            <span class="tech-badge"><span class="dot" style="background: #3178C6"></span>TypeScript</span>
-            <span class="tech-badge"><span class="dot" style="background: #4479A1"></span>MySQL</span>
-            <span class="tech-badge"><span class="dot" style="background: #2D3748"></span>Prisma</span>
-            <span class="tech-badge"><span class="dot" style="background: #FFCA28"></span>Firebase</span>
+            <span class="tech-badge"
+              ><span class="dot" style="background: #E0234E"></span>NestJS</span
+            >
+            <span class="tech-badge"
+              ><span class="dot" style="background: #61DAFB"></span>React Native</span
+            >
+            <span class="tech-badge"
+              ><span class="dot" style="background: #3178C6"></span>TypeScript</span
+            >
+            <span class="tech-badge"
+              ><span class="dot" style="background: #4479A1"></span>MySQL</span
+            >
+            <span class="tech-badge"
+              ><span class="dot" style="background: #2D3748"></span>Prisma</span
+            >
+            <span class="tech-badge"
+              ><span class="dot" style="background: #FFCA28"></span>Firebase</span
+            >
           </div>
         </div>
-        
+
         <!-- Features -->
         <div class="features-section">
           <span class="features-label">Funcionalidades Core</span>
           <div class="features-list">
             <div class="feature-item">
               <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                  <polyline points="14 2 14 8 20 8"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+                  ></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
                 </svg>
               </div>
               <div>
@@ -99,9 +163,17 @@ const { lang = 'es' } = Astro.props;
             </div>
             <div class="feature-item">
               <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                  <line x1="12" y1="18" x2="12.01" y2="18"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                  <line x1="12" y1="18" x2="12.01" y2="18"></line>
                 </svg>
               </div>
               <div>
@@ -111,9 +183,17 @@ const { lang = 'es' } = Astro.props;
             </div>
             <div class="feature-item">
               <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-                  <line x1="1" y1="10" x2="23" y2="10"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                  <line x1="1" y1="10" x2="23" y2="10"></line>
                 </svg>
               </div>
               <div>
@@ -123,20 +203,36 @@ const { lang = 'es' } = Astro.props;
             </div>
           </div>
         </div>
-        
+
         <!-- Action Buttons -->
         <div class="project-actions">
           <a href="#" class="btn btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/>
-              <line x1="10" y1="14" x2="21" y2="3"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
             {t(lang, 'projects.featured.cta_demo')}
           </a>
           <a href="https://github.com/RonaldDM" target="_blank" class="btn btn-outline">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              ></path>
             </svg>
             {t(lang, 'projects.featured.cta_code')}
           </a>
@@ -152,14 +248,14 @@ const { lang = 'es' } = Astro.props;
     position: relative;
     overflow: hidden;
   }
-  
+
   /* Background Glows */
   .project-glow {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
   }
-  
+
   .glow-1 {
     width: 600px;
     height: 600px;
@@ -169,7 +265,7 @@ const { lang = 'es' } = Astro.props;
     filter: blur(100px);
     animation: blob 7s infinite;
   }
-  
+
   .glow-2 {
     width: 500px;
     height: 500px;
@@ -179,31 +275,38 @@ const { lang = 'es' } = Astro.props;
     filter: blur(100px);
     animation: blob 7s infinite reverse;
   }
-  
+
   @keyframes blob {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
   }
-  
+
   .section-header {
     text-align: left;
     margin-bottom: 3rem;
   }
-  
+
   .section-label {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 1rem;
   }
-  
+
   .label-line {
     width: 2rem;
     height: 2px;
     background: var(--color-primary);
   }
-  
+
   .label-text {
     color: var(--color-primary);
     font-size: 0.75rem;
@@ -211,20 +314,20 @@ const { lang = 'es' } = Astro.props;
     text-transform: uppercase;
     letter-spacing: 2px;
   }
-  
+
   .section-title {
     font-size: clamp(2rem, 5vw, 2.5rem);
     font-weight: 700;
     color: var(--color-light);
     margin-bottom: 0.75rem;
   }
-  
+
   .section-description {
     color: var(--color-text-muted);
     font-size: 1.1rem;
     max-width: 600px;
   }
-  
+
   /* Project Card */
   .project-card {
     display: grid;
@@ -237,27 +340,27 @@ const { lang = 'es' } = Astro.props;
     position: relative;
     z-index: 1;
   }
-  
+
   /* Visual Column */
   .project-visual {
     position: relative;
     min-height: 500px;
     overflow: hidden;
   }
-  
+
   /* Screenshot Carousel */
   .screenshot-carousel {
     position: absolute;
     inset: 0;
     background: var(--color-dark);
   }
-  
+
   .carousel-track {
     position: relative;
     width: 100%;
     height: 100%;
   }
-  
+
   .carousel-slide {
     position: absolute;
     inset: 0;
@@ -267,11 +370,11 @@ const { lang = 'es' } = Astro.props;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
   }
-  
+
   .carousel-slide.active {
     opacity: 1;
   }
-  
+
   .carousel-dots {
     position: absolute;
     bottom: 1.5rem;
@@ -281,7 +384,7 @@ const { lang = 'es' } = Astro.props;
     gap: 0.5rem;
     z-index: 10;
   }
-  
+
   .carousel-dots .dot {
     width: 8px;
     height: 8px;
@@ -291,13 +394,13 @@ const { lang = 'es' } = Astro.props;
     cursor: pointer;
     transition: all var(--transition-base);
   }
-  
+
   .carousel-dots .dot.active {
     width: 24px;
     border-radius: 4px;
     background: var(--color-primary);
   }
-  
+
   .carousel-arrow {
     position: absolute;
     top: 50%;
@@ -316,20 +419,20 @@ const { lang = 'es' } = Astro.props;
     z-index: 10;
     transition: all var(--transition-base);
   }
-  
+
   .carousel-arrow:hover {
     background: var(--color-primary);
     border-color: var(--color-primary);
   }
-  
+
   .carousel-arrow.prev {
     left: 1rem;
   }
-  
+
   .carousel-arrow.next {
     right: 1rem;
   }
-  
+
   .card-glow {
     position: absolute;
     bottom: -50px;
@@ -342,11 +445,11 @@ const { lang = 'es' } = Astro.props;
     transition: all var(--transition-base);
     z-index: 0;
   }
-  
+
   .project-card:hover .card-glow {
     background: rgba(13, 148, 136, 0.3);
   }
-  
+
   /* Content Column */
   .project-content {
     padding: 2.5rem;
@@ -355,32 +458,32 @@ const { lang = 'es' } = Astro.props;
     gap: 1.5rem;
     background: var(--color-dark-soft);
   }
-  
+
   .project-header {
     display: flex;
     align-items: center;
     gap: 0.75rem;
   }
-  
+
   .project-logo {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
   }
-  
+
   .project-title {
     font-size: 2rem;
     font-weight: 800;
     color: var(--color-light);
   }
-  
+
   .project-description {
     font-size: 1rem;
     color: var(--color-text-muted);
     line-height: 1.7;
   }
-  
+
   .project-note {
     font-size: 0.9rem;
     color: var(--color-text-muted);
@@ -388,14 +491,14 @@ const { lang = 'es' } = Astro.props;
     padding-left: 1rem;
     border-left: 2px solid rgba(13, 148, 136, 0.3);
   }
-  
+
   /* Tech Stack */
   .tech-section {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .tech-label,
   .features-label {
     font-size: 0.7rem;
@@ -404,13 +507,13 @@ const { lang = 'es' } = Astro.props;
     letter-spacing: 1.5px;
     color: var(--color-text-muted);
   }
-  
+
   .tech-badges {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-  
+
   .tech-badge {
     display: flex;
     align-items: center;
@@ -423,32 +526,32 @@ const { lang = 'es' } = Astro.props;
     font-weight: 500;
     color: var(--color-primary-light);
   }
-  
+
   .tech-badge .dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
   }
-  
+
   /* Features */
   .features-section {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .features-list {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .feature-item {
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
   }
-  
+
   .feature-icon {
     display: flex;
     align-items: center;
@@ -461,24 +564,24 @@ const { lang = 'es' } = Astro.props;
     flex-shrink: 0;
     transition: all var(--transition-fast);
   }
-  
+
   .feature-item:hover .feature-icon {
     background: var(--color-primary);
     color: white;
   }
-  
+
   .feature-item h4 {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--color-light);
     margin-bottom: 0.125rem;
   }
-  
+
   .feature-item p {
     font-size: 0.8rem;
     color: var(--color-text-muted);
   }
-  
+
   /* Action Buttons */
   .project-actions {
     display: flex;
@@ -487,63 +590,63 @@ const { lang = 'es' } = Astro.props;
     padding-top: 1.5rem;
     border-top: 1px solid var(--color-dark-muted);
   }
-  
+
   .project-actions .btn {
     flex: 1;
   }
-  
+
   /* Responsive */
   @media (max-width: 1024px) {
     .project-card {
       grid-template-columns: 1fr;
     }
-    
+
     .project-visual {
       min-height: 350px;
     }
   }
-  
+
   @media (max-width: 600px) {
     .project-content {
       padding: 1.5rem;
     }
-    
+
     .project-title {
       font-size: 1.5rem;
     }
-    
+
     .project-actions {
       flex-direction: column;
     }
-    
+
     .browser-mockup {
       inset: 1rem;
     }
-    
+
     .floating-badge {
       top: 2rem;
       left: 2rem;
     }
   }
-  
+
   /* Other Projects Grid */
   .other-projects {
     margin-top: 3rem;
   }
-  
+
   .other-title {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--color-light);
     margin-bottom: 1.5rem;
   }
-  
+
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
   }
-  
+
   .mini-card {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(12px);
@@ -556,7 +659,7 @@ const { lang = 'es' } = Astro.props;
     position: relative;
     overflow: hidden;
   }
-  
+
   .mini-card::before {
     content: '';
     position: absolute;
@@ -568,24 +671,24 @@ const { lang = 'es' } = Astro.props;
     opacity: 0;
     transition: opacity var(--transition-base);
   }
-  
+
   .mini-card:hover {
     border-color: rgba(13, 148, 136, 0.4);
     transform: translateY(-4px);
     box-shadow: 0 20px 40px -15px rgba(13, 148, 136, 0.2);
   }
-  
+
   .mini-card:hover::before {
     opacity: 1;
   }
-  
+
   .mini-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
   }
-  
+
   .mini-icon {
     display: flex;
     align-items: center;
@@ -597,22 +700,22 @@ const { lang = 'es' } = Astro.props;
     color: var(--color-primary);
     transition: all var(--transition-base);
   }
-  
+
   .mini-card:hover .mini-icon {
     background: var(--color-primary);
     color: white;
   }
-  
+
   .mini-arrow {
     color: var(--color-text-muted);
     font-size: 1.25rem;
     transition: color var(--transition-fast);
   }
-  
+
   .mini-card:hover .mini-arrow {
     color: var(--color-primary);
   }
-  
+
   .mini-title {
     font-size: 1rem;
     font-weight: 600;
@@ -620,11 +723,11 @@ const { lang = 'es' } = Astro.props;
     margin-bottom: 0.5rem;
     transition: color var(--transition-fast);
   }
-  
+
   .mini-card:hover .mini-title {
     color: var(--color-primary);
   }
-  
+
   .mini-description {
     font-size: 0.85rem;
     color: var(--color-text-muted);
@@ -632,14 +735,14 @@ const { lang = 'es' } = Astro.props;
     margin-bottom: 1rem;
     flex-grow: 1;
   }
-  
+
   .mini-tech {
     display: flex;
     flex-wrap: wrap;
     gap: 0.375rem;
     margin-bottom: 1rem;
   }
-  
+
   .mini-tech span {
     padding: 0.25rem 0.625rem;
     background: var(--color-dark);
@@ -649,104 +752,104 @@ const { lang = 'es' } = Astro.props;
     border-radius: var(--radius-md);
     border: 1px solid var(--color-dark-muted);
   }
-  
+
   .mini-footer {
     padding-top: 0.75rem;
     border-top: 1px solid var(--color-dark-muted);
   }
-  
+
   .mini-stat {
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--color-primary);
   }
-  
+
   @media (max-width: 900px) {
     .projects-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
-  
+
   @media (max-width: 600px) {
     .projects {
       padding: 50px 0;
     }
-    
+
     .projects-header {
       margin-bottom: 2rem;
     }
-    
+
     .section-title {
       font-size: 1.5rem;
     }
-    
+
     .projects-grid {
       grid-template-columns: 1fr;
       gap: 1rem;
     }
-    
+
     /* Compact carousel */
     .carousel-container {
       margin-bottom: 1.5rem;
     }
-    
+
     .carousel-wrapper {
       height: 200px;
     }
-    
+
     .carousel-arrow {
       width: 32px;
       height: 32px;
     }
-    
+
     /* Compact project info */
     .project-info {
       padding: 1rem;
     }
-    
+
     .project-name {
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
     }
-    
+
     .project-description {
       font-size: 0.8rem;
       -webkit-line-clamp: 2;
       margin-bottom: 0.75rem;
     }
-    
+
     .tech-stack {
       margin-bottom: 0.75rem;
     }
-    
+
     .tech-stack-title {
       font-size: 0.7rem;
       margin-bottom: 0.5rem;
     }
-    
+
     .tech-tag {
       font-size: 0.7rem;
       padding: 0.25rem 0.5rem;
     }
-    
+
     .project-links {
       gap: 0.5rem;
     }
-    
+
     .project-links a {
       font-size: 0.75rem;
       padding: 0.5rem 1rem;
     }
-    
+
     /* Compact mini cards */
     .mini-card {
       padding: 1rem;
     }
-    
+
     .mini-title {
       font-size: 0.9rem;
     }
-    
+
     .mini-description {
       font-size: 0.8rem;
       -webkit-line-clamp: 2;
@@ -759,43 +862,88 @@ const { lang = 'es' } = Astro.props;
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    const CAROUSEL_INTERVAL_MS = 5000;
+    const CAROUSEL_RESTART_DELAY_MS = 2000;
+
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.carousel-dots .dot');
     const prevBtn = document.getElementById('carousel-prev');
     const nextBtn = document.getElementById('carousel-next');
-    
+
     if (!slides.length) return;
-    
+
     let currentIndex = 0;
-    
-    function goToSlide(index) {
+    let intervalId: ReturnType<typeof setInterval> | null = null;
+    let restartTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function goToSlide(index: number) {
       slides.forEach((slide, i) => {
         slide.classList.toggle('active', i === index);
       });
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === index);
+        dot.setAttribute('aria-current', String(i === index));
       });
       currentIndex = index;
     }
-    
+
     function nextSlide() {
-      const next = (currentIndex + 1) % slides.length;
-      goToSlide(next);
+      goToSlide((currentIndex + 1) % slides.length);
     }
-    
+
     function prevSlide() {
-      const prev = (currentIndex - 1 + slides.length) % slides.length;
-      goToSlide(prev);
+      goToSlide((currentIndex - 1 + slides.length) % slides.length);
     }
-    
-    prevBtn?.addEventListener('click', prevSlide);
-    nextBtn?.addEventListener('click', nextSlide);
-    
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => goToSlide(i));
+
+    function startAutoAdvance() {
+      intervalId = setInterval(nextSlide, CAROUSEL_INTERVAL_MS);
+    }
+
+    function stopAutoAdvance() {
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    }
+
+    function onManualNav() {
+      stopAutoAdvance();
+      if (restartTimer !== null) clearTimeout(restartTimer);
+      restartTimer = setTimeout(startAutoAdvance, CAROUSEL_RESTART_DELAY_MS);
+    }
+
+    prevBtn?.addEventListener('click', () => {
+      prevSlide();
+      onManualNav();
     });
-    
-    // Auto-advance every 5 seconds
-    setInterval(nextSlide, 5000);
+    nextBtn?.addEventListener('click', () => {
+      nextSlide();
+      onManualNav();
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        goToSlide(i);
+        onManualNav();
+      });
+    });
+
+    startAutoAdvance();
+
+    // Stop auto-advance when the section leaves the viewport
+    const section = document.getElementById('projects');
+    if (section) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) {
+            stopAutoAdvance();
+            if (restartTimer !== null) clearTimeout(restartTimer);
+            observer.disconnect();
+          }
+        },
+        { threshold: 0 }
+      );
+      observer.observe(section);
+    }
   });
 </script>

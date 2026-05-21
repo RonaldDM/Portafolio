@@ -11,35 +11,36 @@ export const defaultLang = 'es';
 
 export type Lang = keyof typeof languages;
 
-const translations = {
-  es: esTranslations,
-  en: enTranslations,
-} as const;
+type TranslationValue = string | string[] | { [key: string]: TranslationValue };
+
+const translations: Record<Lang, TranslationValue> = {
+  es: esTranslations as TranslationValue,
+  en: enTranslations as TranslationValue,
+};
+
+function getNestedValue(obj: TranslationValue, keys: string[]): TranslationValue | undefined {
+  let current: TranslationValue = obj;
+  for (const k of keys) {
+    if (
+      current !== null &&
+      typeof current === 'object' &&
+      !Array.isArray(current) &&
+      k in current
+    ) {
+      current = (current as Record<string, TranslationValue>)[k];
+    } else {
+      return undefined;
+    }
+  }
+  return current;
+}
 
 /**
  * Get translation by key path (e.g., "hero.greeting")
  */
 export function t(lang: Lang, key: string): string {
   const keys = key.split('.');
-  let value: any = translations[lang];
-  
-  for (const k of keys) {
-    if (value && typeof value === 'object' && k in value) {
-      value = value[k];
-    } else {
-      // Fallback to Spanish if key not found
-      value = translations.es;
-      for (const k2 of keys) {
-        if (value && typeof value === 'object' && k2 in value) {
-          value = value[k2];
-        } else {
-          return key; // Return key if not found
-        }
-      }
-      break;
-    }
-  }
-  
+  const value = getNestedValue(translations[lang], keys) ?? getNestedValue(translations.es, keys);
   return typeof value === 'string' ? value : key;
 }
 
@@ -48,17 +49,8 @@ export function t(lang: Lang, key: string): string {
  */
 export function tArray(lang: Lang, key: string): string[] {
   const keys = key.split('.');
-  let value: any = translations[lang];
-  
-  for (const k of keys) {
-    if (value && typeof value === 'object' && k in value) {
-      value = value[k];
-    } else {
-      return [];
-    }
-  }
-  
-  return Array.isArray(value) ? value : [];
+  const value = getNestedValue(translations[lang], keys);
+  return Array.isArray(value) ? (value as string[]) : [];
 }
 
 /**

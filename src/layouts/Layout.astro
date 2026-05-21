@@ -8,104 +8,114 @@ interface Props {
   lang?: Lang;
 }
 
-const { 
+const {
   lang = 'es',
   title = t(lang, 'meta.title'),
-  description = t(lang, 'meta.description')
+  description = t(lang, 'meta.description'),
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang}>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content={description}>
-  <meta name="author" content="Ronald Eduardo Davila Medina">
-  <meta name="keywords" content="Ronald Davila, Full Stack Developer, Node.js, React, NestJS, Python, PHP, Developer Peru">
-  
-  <!-- Open Graph / Social Media -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content={title}>
-  <meta property="og:description" content={description}>
-  <meta property="og:image" content="https://ronalddm.vercel.app/logo2.png">
-  <meta property="og:url" content="https://ronalddm.vercel.app">
-  
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content={title}>
-  <meta name="twitter:description" content={description}>
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/logo2.png">
-  <link rel="apple-touch-icon" href="/logo2.png">
-  <link rel="manifest" href="/manifest.json">
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-  
-  <title>{title}</title>
-</head>
-<body>
-  <script is:inline>
-    // Auto-detect browser language (only on first visit)
-    (function() {
-      const hasVisited = localStorage.getItem('lang-preference');
-      if (hasVisited) return; // User has already visited, respect their choice
-      
-      const browserLang = navigator.language || navigator.userLanguage;
-      const isEnglish = browserLang.startsWith('en');
-      const isOnSpanish = window.location.pathname === '/' || !window.location.pathname.startsWith('/en');
-      
-      if (isEnglish && isOnSpanish) {
-        localStorage.setItem('lang-preference', 'en');
-        window.location.href = '/en/';
-      } else {
-        localStorage.setItem('lang-preference', 'es');
-      }
-    })();
-  </script>
-  
-  <slot />
-  
-  <script>
-    // Scroll Reveal Animation
-    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger-children');
-    
-    const revealOnScroll = () => {
-      const windowHeight = window.innerHeight;
-      const revealPoint = 150;
-      
-      revealElements.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        
-        if (elementTop < windowHeight - revealPoint) {
-          el.classList.add('active');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Ronald Eduardo Davila Medina" />
+    <meta
+      name="keywords"
+      content="Ronald Davila, Full Stack Developer, Node.js, React, NestJS, Python, PHP, Developer Peru"
+    />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${import.meta.env.SITE}/logo2.png`} />
+    <meta property="og:url" content={import.meta.env.SITE} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${import.meta.env.SITE}/logo2.png`} />
+
+    <!-- Hreflang for bilingual SEO -->
+    <link rel="alternate" hreflang="es" href={`${import.meta.env.SITE}/`} />
+    <link rel="alternate" hreflang="en" href={`${import.meta.env.SITE}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${import.meta.env.SITE}/`} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo2.png" />
+    <link rel="apple-touch-icon" href="/logo2.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <script is:inline>
+      // Auto-detect browser language (only on first visit)
+      (function () {
+        const hasVisited = localStorage.getItem('lang-preference');
+        if (hasVisited) return; // User has already visited, respect their choice
+
+        const browserLang = navigator.language || navigator.userLanguage;
+        const isEnglish = browserLang.startsWith('en');
+        const isOnSpanish =
+          window.location.pathname === '/' || !window.location.pathname.startsWith('/en');
+
+        if (isEnglish && isOnSpanish) {
+          localStorage.setItem('lang-preference', 'en');
+          window.location.href = '/en/';
+        } else {
+          localStorage.setItem('lang-preference', 'es');
         }
-      });
-    };
-    
-    // Initial check
-    revealOnScroll();
-    
-    // Add scroll listener
-    window.addEventListener('scroll', revealOnScroll, { passive: true });
-    
-    // Smooth scroll for navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(this: HTMLAnchorElement, e: Event) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        if (href) {
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
+      })();
+    </script>
+
+    <slot />
+
+    <script>
+      // Scroll Reveal Animation via IntersectionObserver — no scroll event, no forced layout
+      const SCROLL_REVEAL_MARGIN = 150; // px from viewport bottom to trigger reveal
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: `0px 0px -${SCROLL_REVEAL_MARGIN}px 0px` }
+      );
+
+      document
+        .querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger-children')
+        .forEach((el) => revealObserver.observe(el));
+
+      // Smooth scroll for navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          if (href) {
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
           }
-        }
+        });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

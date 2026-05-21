@@ -1,29 +1,29 @@
 ---
 // Language Switcher Component
-import { languages, getAlternateLang, getLocalizedPath, type Lang } from '../i18n/ui';
+import { type Lang } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
-const alternateLang = getAlternateLang(lang);
-const alternatePath = getLocalizedPath(alternateLang);
 ---
 
 <div class="lang-switcher">
-  <a 
-    href={lang === 'es' ? '/' : '/'}
-    class:list={["lang-btn", { active: lang === 'es' }]}
+  <a
+    href="/"
+    class:list={['lang-btn', { active: lang === 'es' }]}
     aria-label="Español"
+    data-lang="es"
   >
     ES
   </a>
   <span class="lang-divider">/</span>
-  <a 
-    href={lang === 'en' ? '/en/' : '/en/'}
-    class:list={["lang-btn", { active: lang === 'en' }]}
+  <a
+    href="/en/"
+    class:list={['lang-btn', { active: lang === 'en' }]}
     aria-label="English"
+    data-lang="en"
   >
     EN
   </a>
@@ -39,7 +39,7 @@ const alternatePath = getLocalizedPath(alternateLang);
     border: 1px solid var(--color-dark-muted);
     border-radius: var(--radius-full);
   }
-  
+
   .lang-btn {
     font-size: 0.8rem;
     font-weight: 600;
@@ -48,16 +48,16 @@ const alternatePath = getLocalizedPath(alternateLang);
     border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
   }
-  
+
   .lang-btn:hover {
     color: var(--color-light);
   }
-  
+
   .lang-btn.active {
     color: var(--color-primary);
     background: rgba(13, 148, 136, 0.1);
   }
-  
+
   .lang-divider {
     color: var(--color-dark-muted);
     font-size: 0.8rem;
@@ -66,9 +66,9 @@ const alternatePath = getLocalizedPath(alternateLang);
 
 <script>
   // Save language preference when user manually switches
-  document.querySelectorAll('.lang-btn').forEach(btn => {
+  document.querySelectorAll<HTMLAnchorElement>('.lang-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const lang = btn.textContent?.trim().toLowerCase();
+      const lang = btn.dataset.lang;
       if (lang === 'es' || lang === 'en') {
         localStorage.setItem('lang-preference', lang);
       }

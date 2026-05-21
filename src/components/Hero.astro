@@ -9,7 +9,11 @@ interface Props {
 const { lang = 'es' } = Astro.props;
 ---
 
-<section class="hero" id="hero">
+<section
+  class="hero"
+  id="hero"
+  data-typing-words={JSON.stringify(tArray(lang, 'hero.typing_words'))}
+>
   <div class="hero-background">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
@@ -17,12 +21,13 @@ const { lang = 'es' } = Astro.props;
     <!-- Code Rain Background -->
     <canvas id="code-rain" class="code-rain"></canvas>
   </div>
-  
+
   <div class="container hero-content">
     <div class="hero-text">
       <p class="hero-greeting">{t(lang, 'hero.greeting')}</p>
       <h1 class="hero-title">
-        {t(lang, 'hero.name')} <span class="gradient-text">{t(lang, 'hero.lastName')}</span>
+        {t(lang, 'hero.name')}
+        <span class="gradient-text">{t(lang, 'hero.lastName')}</span>
       </h1>
       <h2 class="hero-subtitle">
         <span class="typing-wrapper">
@@ -33,62 +38,130 @@ const { lang = 'es' } = Astro.props;
       <p class="hero-description">
         {t(lang, 'hero.description')}
       </p>
-      
+
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"></path>
           </svg>
           {t(lang, 'hero.cta_projects')}
         </a>
         <a href="#contact" class="btn btn-outline">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <polyline points="22,6 12,13 2,6"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            ></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
           </svg>
           {t(lang, 'hero.cta_contact')}
         </a>
         <a href="/CV - Ronald Davila Medina.pdf" download class="btn btn-outline">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
           {t(lang, 'hero.cta_cv')}
         </a>
       </div>
-      
+
       <div class="hero-social">
-        <a href="https://linkedin.com/in/ronalddm2209" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        <a
+          href="https://linkedin.com/in/ronalddm2209"
+          target="_blank"
+          rel="noopener"
+          class="social-link"
+          aria-label="LinkedIn"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+            ></path>
           </svg>
         </a>
-        <a href="https://github.com/RonaldDM" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        <a
+          href="https://github.com/RonaldDM"
+          target="_blank"
+          rel="noopener"
+          class="social-link"
+          aria-label="GitHub"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+            ></path>
           </svg>
         </a>
         <a href="mailto:contactos.ronald2209@gmail.com" class="social-link" aria-label="Email">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <polyline points="22,6 12,13 2,6"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            ></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
           </svg>
         </a>
       </div>
     </div>
-    
+
     <div class="hero-visual">
       <!-- Logo with Particles -->
       <div class="logo-container">
         <div class="particles" id="particles"></div>
         <div class="hero-image-wrapper">
-          <img src="/logo2.png" alt="Ronald Davila Logo" class="hero-image">
+          <img src="/logo2.png" alt="Ronald Davila Logo" class="hero-image" />
         </div>
         <!-- Dynamic Shadow -->
         <div class="logo-shadow"></div>
       </div>
-      
+
       <!-- Mini Terminal -->
       <div class="mini-terminal">
         <div class="terminal-header">
@@ -107,7 +180,7 @@ const { lang = 'es' } = Astro.props;
       </div>
     </div>
   </div>
-  
+
   <a href="#about" class="scroll-indicator" aria-label="Scroll to next section">
     <div class="scroll-mouse">
       <div class="scroll-wheel"></div>
@@ -126,26 +199,26 @@ const { lang = 'es' } = Astro.props;
     overflow: hidden;
     padding-top: 80px;
   }
-  
+
   .hero-background {
     position: absolute;
     inset: 0;
     z-index: -1;
   }
-  
+
   .blob-1 {
     top: -20%;
     left: -10%;
     animation: float 8s ease-in-out infinite;
   }
-  
+
   .blob-2 {
     bottom: -20%;
     right: -10%;
     background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
     animation: float 10s ease-in-out infinite reverse;
   }
-  
+
   .hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -153,25 +226,25 @@ const { lang = 'es' } = Astro.props;
     align-items: center;
     padding: 2rem 0;
   }
-  
+
   .hero-text {
     animation: fadeInLeft 1s ease-out;
   }
-  
+
   .hero-greeting {
     font-size: 1.25rem;
     color: var(--color-primary);
     font-weight: 500;
     margin-bottom: 0.5rem;
   }
-  
+
   .hero-title {
     font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 800;
     margin-bottom: 0.5rem;
     line-height: 1.1;
   }
-  
+
   .hero-subtitle {
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     color: var(--color-text-muted);
@@ -179,26 +252,36 @@ const { lang = 'es' } = Astro.props;
     margin-bottom: 1.5rem;
     min-height: 2.5rem;
   }
-  
-  .typing-wrapper { display: inline-flex; align-items: center; }
-  .typing-cursor { color: var(--color-primary); animation: blink 1s step-end infinite; margin-left: 2px; }
-  
+
+  .typing-wrapper {
+    display: inline-flex;
+    align-items: center;
+  }
+  .typing-cursor {
+    color: var(--color-primary);
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+  }
+
   .hero-description {
     max-width: 500px;
     margin-bottom: 2rem;
     font-size: 1.125rem;
     line-height: 1.8;
   }
-  
+
   .hero-buttons {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
     margin-bottom: 2.5rem;
   }
-  
-  .hero-social { display: flex; gap: 1rem; }
-  
+
+  .hero-social {
+    display: flex;
+    gap: 1rem;
+  }
+
   .social-link {
     display: flex;
     align-items: center;
@@ -210,14 +293,14 @@ const { lang = 'es' } = Astro.props;
     color: var(--color-text-muted);
     transition: all var(--transition-base);
   }
-  
+
   .social-link:hover {
     background: var(--gradient-primary);
     color: white;
     transform: translateY(-3px);
     box-shadow: var(--shadow-glow);
   }
-  
+
   /* Hero Visual with Logo and Effects */
   .hero-visual {
     position: relative;
@@ -229,7 +312,7 @@ const { lang = 'es' } = Astro.props;
     min-height: 500px;
     gap: 2rem;
   }
-  
+
   /* Code Rain Background */
   .code-rain {
     position: absolute;
@@ -237,7 +320,7 @@ const { lang = 'es' } = Astro.props;
     opacity: 0.15;
     pointer-events: none;
   }
-  
+
   /* Logo Container with Particles */
   .logo-container {
     position: relative;
@@ -245,14 +328,14 @@ const { lang = 'es' } = Astro.props;
     justify-content: center;
     align-items: center;
   }
-  
+
   .particles {
     position: absolute;
     width: 400px;
     height: 400px;
     pointer-events: none;
   }
-  
+
   .particle {
     position: absolute;
     width: 4px;
@@ -262,16 +345,23 @@ const { lang = 'es' } = Astro.props;
     opacity: 0.6;
     animation: particle-float 3s ease-in-out infinite;
   }
-  
+
   .particle:nth-child(odd) {
     background: var(--color-accent);
   }
-  
+
   @keyframes particle-float {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
-    50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-20px) scale(1.2);
+      opacity: 1;
+    }
   }
-  
+
   /* Dynamic Rhombus Shadow */
   .logo-shadow {
     position: absolute;
@@ -285,13 +375,14 @@ const { lang = 'es' } = Astro.props;
     animation: shadow-pulse 4s ease-in-out infinite;
     pointer-events: none;
   }
-  
+
   @keyframes shadow-pulse {
-    0%, 100% { 
+    0%,
+    100% {
       transform: translateX(-50%) scale(1);
       opacity: 0.4;
     }
-    50% { 
+    50% {
       transform: translateX(-50%) scale(0.85);
       opacity: 0.2;
     }
@@ -303,7 +394,7 @@ const { lang = 'es' } = Astro.props;
     height: 320px;
     z-index: 2;
   }
-  
+
   .hero-image {
     width: 100%;
     height: 100%;
@@ -311,16 +402,17 @@ const { lang = 'es' } = Astro.props;
     filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.4));
     animation: logo-float 4s ease-in-out infinite;
   }
-  
+
   @keyframes logo-float {
-    0%, 100% { 
+    0%,
+    100% {
       transform: translateY(0);
     }
-    50% { 
+    50% {
       transform: translateY(-20px);
     }
   }
-  
+
   /* Mini Terminal */
   .mini-terminal {
     position: absolute;
@@ -335,7 +427,7 @@ const { lang = 'es' } = Astro.props;
     z-index: 10;
     animation: fadeInUp 1s ease-out 0.8s both;
   }
-  
+
   .terminal-header {
     display: flex;
     align-items: center;
@@ -344,54 +436,62 @@ const { lang = 'es' } = Astro.props;
     background: rgba(255, 255, 255, 0.03);
     border-bottom: 1px solid var(--color-dark-muted);
   }
-  
+
   .terminal-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
   }
-  
-  .terminal-dot.red { background: #ff5f56; }
-  .terminal-dot.yellow { background: #ffbd2e; }
-  .terminal-dot.green { background: #27ca40; }
-  
+
+  .terminal-dot.red {
+    background: #ff5f56;
+  }
+  .terminal-dot.yellow {
+    background: #ffbd2e;
+  }
+  .terminal-dot.green {
+    background: #27ca40;
+  }
+
   .terminal-title {
     margin-left: auto;
     font-size: 0.7rem;
     color: var(--color-text-muted);
     font-family: var(--font-mono);
   }
-  
+
   .terminal-body {
     padding: 1rem;
     font-family: var(--font-mono);
     font-size: 0.85rem;
   }
-  
+
   .terminal-line {
     display: flex;
     gap: 0.5rem;
     color: var(--color-text-muted);
   }
-  
+
   .prompt {
     color: var(--color-primary);
     font-weight: 600;
   }
-  
+
   .command {
     color: var(--color-light);
   }
-  
+
   .cursor {
     color: var(--color-primary);
     animation: blink 1s step-end infinite;
   }
-  
+
   @keyframes blink {
-    50% { opacity: 0; }
+    50% {
+      opacity: 0;
+    }
   }
-  
+
   /* Scroll Indicator */
   .scroll-indicator {
     position: absolute;
@@ -409,9 +509,11 @@ const { lang = 'es' } = Astro.props;
     animation: fadeInUp 1s ease-out 1s both;
     transition: color var(--transition-base);
   }
-  
-  .scroll-indicator:hover { color: var(--color-primary); }
-  
+
+  .scroll-indicator:hover {
+    color: var(--color-primary);
+  }
+
   .scroll-mouse {
     width: 26px;
     height: 40px;
@@ -421,7 +523,7 @@ const { lang = 'es' } = Astro.props;
     justify-content: center;
     padding-top: 8px;
   }
-  
+
   .scroll-wheel {
     width: 3px;
     height: 8px;
@@ -429,56 +531,145 @@ const { lang = 'es' } = Astro.props;
     border-radius: 3px;
     animation: scroll-wheel 2s ease-in-out infinite;
   }
-  
+
   @keyframes scroll-wheel {
-    0%, 100% { opacity: 1; transform: translateY(0); }
-    50% { opacity: 0.5; transform: translateY(10px); }
+    0%,
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateY(10px);
+    }
   }
-  
+
   /* Responsive */
   @media (max-width: 900px) {
-    .hero-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
-    .hero-text { order: 2; }
-    .hero-visual { order: 1; min-height: 280px; }
-    .hero-description { margin: 0 auto 1.5rem; font-size: 0.95rem; }
-    .hero-buttons { justify-content: center; flex-direction: column; gap: 0.75rem; }
-    .hero-social { justify-content: center; }
-    .hero-image-wrapper { width: 180px; height: 180px; }
-    .mini-terminal { display: none; }
-    .logo-glow { width: 240px; height: 240px; }
-    .particles { width: 260px; height: 260px; }
-    .scroll-indicator { display: none; }
-    .hero-title { font-size: 2.5rem; }
-    .hero-subtitle { font-size: 1rem; }
+    .hero-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 2rem;
+    }
+    .hero-text {
+      order: 2;
+    }
+    .hero-visual {
+      order: 1;
+      min-height: 280px;
+    }
+    .hero-description {
+      margin: 0 auto 1.5rem;
+      font-size: 0.95rem;
+    }
+    .hero-buttons {
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .hero-social {
+      justify-content: center;
+    }
+    .hero-image-wrapper {
+      width: 180px;
+      height: 180px;
+    }
+    .mini-terminal {
+      display: none;
+    }
+    .logo-glow {
+      width: 240px;
+      height: 240px;
+    }
+    .particles {
+      width: 260px;
+      height: 260px;
+    }
+    .scroll-indicator {
+      display: none;
+    }
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    .hero-subtitle {
+      font-size: 1rem;
+    }
   }
-  
+
   @media (max-width: 480px) {
-    .hero { padding: 80px 0 40px; min-height: auto; }
-    .hero-visual { min-height: 220px; }
-    .hero-image-wrapper { width: 140px; height: 140px; }
-    .hero-buttons { width: 100%; padding: 0 1rem; }
-    .btn { width: 100%; justify-content: center; padding: 0.875rem 1.5rem; font-size: 0.875rem; }
-    .logo-glow { width: 180px; height: 180px; }
-    .particles { width: 200px; height: 200px; }
-    .hero-title { font-size: 2rem; }
-    .hero-subtitle { font-size: 0.9rem; }
-    .hero-description { font-size: 0.85rem; padding: 0 0.5rem; }
-    .hero-social { gap: 0.75rem; margin-top: 1rem; }
-    .social-link { width: 40px; height: 40px; }
+    .hero {
+      padding: 80px 0 40px;
+      min-height: auto;
+    }
+    .hero-visual {
+      min-height: 220px;
+    }
+    .hero-image-wrapper {
+      width: 140px;
+      height: 140px;
+    }
+    .hero-buttons {
+      width: 100%;
+      padding: 0 1rem;
+    }
+    .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 0.875rem 1.5rem;
+      font-size: 0.875rem;
+    }
+    .logo-glow {
+      width: 180px;
+      height: 180px;
+    }
+    .particles {
+      width: 200px;
+      height: 200px;
+    }
+    .hero-title {
+      font-size: 2rem;
+    }
+    .hero-subtitle {
+      font-size: 0.9rem;
+    }
+    .hero-description {
+      font-size: 0.85rem;
+      padding: 0 0.5rem;
+    }
+    .hero-social {
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .social-link {
+      width: 40px;
+      height: 40px;
+    }
   }
 </style>
 
 <script>
-  // Typing effect for hero subtitle
+  const TYPING_SPEED_MS = 100;
+  const TYPING_DELETE_MS = 50;
+  const TYPING_PAUSE_MS = 2000;
+  const WORD_TRANSITION_MS = 500;
+  const TERMINAL_PAUSE_MS = 3000;
+  const CANVAS_FPS = 20;
+  const FRAME_MS = 1000 / CANVAS_FPS;
+  const PARTICLE_COUNT = 20;
+  const PARTICLE_ORBIT_RADIUS = 150;
+
+  // --- Typing effect: words come from i18n via data attribute ---
+  const heroSection = document.querySelector('.hero') as HTMLElement;
+  const words: string[] = JSON.parse(heroSection?.dataset.typingWords || '[]');
   const typingText = document.getElementById('typing-text');
-  const words = ['Full Stack Developer', 'Node.js Expert', 'React Developer', 'Python Enthusiast', 'NestJS Specialist'];
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
-  
+
   function typeEffect() {
     const currentWord = words[wordIndex];
-    
+    if (!currentWord) return;
+
     if (isDeleting) {
       if (typingText) typingText.textContent = currentWord.substring(0, charIndex - 1);
       charIndex--;
@@ -486,58 +677,59 @@ const { lang = 'es' } = Astro.props;
       if (typingText) typingText.textContent = currentWord.substring(0, charIndex + 1);
       charIndex++;
     }
-    
-    let typeSpeed = isDeleting ? 50 : 100;
-    
+
+    let typeSpeed = isDeleting ? TYPING_DELETE_MS : TYPING_SPEED_MS;
+
     if (!isDeleting && charIndex === currentWord.length) {
-      typeSpeed = 2000;
+      typeSpeed = TYPING_PAUSE_MS;
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       wordIndex = (wordIndex + 1) % words.length;
-      typeSpeed = 500;
+      typeSpeed = WORD_TRANSITION_MS;
     }
-    
+
     setTimeout(typeEffect, typeSpeed);
   }
-  
-  typeEffect();
-  
-  // Create particles around logo
+
+  if (words.length > 0) typeEffect();
+
+  // --- Particles around logo ---
   const particlesContainer = document.getElementById('particles');
   if (particlesContainer) {
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
       const particle = document.createElement('div');
       particle.className = 'particle';
-      const angle = (i / 20) * Math.PI * 2;
-      const radius = 150 + Math.random() * 50;
+      const angle = (i / PARTICLE_COUNT) * Math.PI * 2;
+      const radius = PARTICLE_ORBIT_RADIUS + Math.random() * 50;
       const x = 200 + Math.cos(angle) * radius;
       const y = 200 + Math.sin(angle) * radius;
       particle.style.left = x + 'px';
       particle.style.top = y + 'px';
-      particle.style.animationDelay = (i * 0.15) + 's';
-      particle.style.width = (3 + Math.random() * 3) + 'px';
-      particle.style.height = particle.style.width;
+      particle.style.animationDelay = i * 0.15 + 's';
+      const size = 3 + Math.random() * 3 + 'px';
+      particle.style.width = size;
+      particle.style.height = size;
       particlesContainer.appendChild(particle);
     }
   }
-  
-  // Mini terminal typing effect
+
+  // --- Mini terminal typing effect ---
   const terminalCommand = document.getElementById('terminal-command');
   const commands = [
     'npm run dev',
     'git push origin main',
     'docker compose up',
     'pnpm install',
-    'npx prisma migrate'
+    'npx prisma migrate',
   ];
   let cmdIndex = 0;
   let cmdCharIndex = 0;
   let cmdIsDeleting = false;
-  
+
   function typeTerminal() {
     const currentCmd = commands[cmdIndex];
-    
+
     if (cmdIsDeleting) {
       if (terminalCommand) terminalCommand.textContent = currentCmd.substring(0, cmdCharIndex - 1);
       cmdCharIndex--;
@@ -545,65 +737,89 @@ const { lang = 'es' } = Astro.props;
       if (terminalCommand) terminalCommand.textContent = currentCmd.substring(0, cmdCharIndex + 1);
       cmdCharIndex++;
     }
-    
+
     let speed = cmdIsDeleting ? 30 : 80;
-    
+
     if (!cmdIsDeleting && cmdCharIndex === currentCmd.length) {
-      speed = 3000;
+      speed = TERMINAL_PAUSE_MS;
       cmdIsDeleting = true;
     } else if (cmdIsDeleting && cmdCharIndex === 0) {
       cmdIsDeleting = false;
       cmdIndex = (cmdIndex + 1) % commands.length;
-      speed = 500;
+      speed = WORD_TRANSITION_MS;
     }
-    
+
     setTimeout(typeTerminal, speed);
   }
-  
+
   typeTerminal();
-  
-  // Code Rain effect on canvas
+
+  // --- Canvas Code Rain: rAF + ResizeObserver (no setInterval, no window resize leak) ---
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canvas = document.getElementById('code-rain') as HTMLCanvasElement;
-  if (canvas) {
+  if (canvas && !prefersReducedMotion) {
     const ctx = canvas.getContext('2d');
     if (ctx) {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      
+
       const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ</>{}[]';
       const fontSize = 14;
-      const columns = canvas.width / fontSize;
-      const drops: number[] = [];
-      
-      for (let i = 0; i < columns; i++) {
-        drops[i] = Math.random() * -100;
-      }
-      
+      let columns = Math.floor(canvas.width / fontSize);
+      const drops: number[] = Array.from({ length: columns }, () => Math.random() * -100);
+
       function draw() {
         if (!ctx) return;
         ctx.fillStyle = 'rgba(8, 15, 29, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
         ctx.fillStyle = 'rgba(13, 148, 136, 0.5)';
         ctx.font = fontSize + 'px monospace';
-        
+
         for (let i = 0; i < drops.length; i++) {
           const char = chars[Math.floor(Math.random() * chars.length)];
           ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-          
-          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
-          }
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
           drops[i] += 0.3;
         }
       }
-      
-      setInterval(draw, 50);
-      
-      window.addEventListener('resize', () => {
+
+      let rafId: number;
+      let lastTime = 0;
+      let isAnimating = true;
+
+      function loop(timestamp: number) {
+        if (!isAnimating) return;
+        if (timestamp - lastTime >= FRAME_MS) {
+          draw();
+          lastTime = timestamp;
+        }
+        rafId = requestAnimationFrame(loop);
+      }
+
+      rafId = requestAnimationFrame(loop);
+
+      // Pause animation when tab is hidden to save CPU
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          isAnimating = false;
+          cancelAnimationFrame(rafId);
+        } else {
+          isAnimating = true;
+          rafId = requestAnimationFrame(loop);
+        }
+      });
+
+      // ResizeObserver instead of window resize listener — no global leak
+      const resizeObserver = new ResizeObserver(() => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        columns = Math.floor(canvas.width / fontSize);
+        drops.length = 0;
+        for (let i = 0; i < columns; i++) drops[i] = Math.random() * -100;
       });
+
+      const heroBackground = document.querySelector('.hero-background');
+      if (heroBackground) resizeObserver.observe(heroBackground);
     }
   }
 </script>
