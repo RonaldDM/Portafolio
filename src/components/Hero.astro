@@ -74,7 +74,7 @@ const { lang = 'es' } = Astro.props;
           </svg>
           {t(lang, 'hero.cta_contact')}
         </a>
-        <a href="/CV - Ronald Davila Medina.pdf" download class="btn btn-outline">
+        <a href={lang === 'es' ? '/Ronald%20Davila%20CV%20(ES).pdf' : '/Ronald%20Davila%20CV%20(EN).pdf'} download class="btn btn-outline">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
