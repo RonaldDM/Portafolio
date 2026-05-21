@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Ronald Davila | Full Stack Developer",
-    "description": "Systems Engineer and Full Stack Developer specialized in Node.js, NestJS, React and Python. Portfolio of projects and professional experience."
+    "title": "Ronald Davila | Fullstack Developer",
+    "description": "Fullstack Developer with expertise in Node.js, NestJS, React, Electron and AWS. Specialized in scalable systems, web tracking, payment integrations and desktop applications."
   },
   "nav": {
     "home": "Home",
@@ -21,7 +21,8 @@
     "cta_cv": "Download CV",
     "scroll": "Scroll",
     "typing_words": [
-      "Full Stack Developer",
+      "Fullstack Developer",
+      "Backend Engineer",
       "Node.js Expert",
       "React Developer",
       "Python Enthusiast",
@@ -32,15 +33,15 @@
     "label": "About Me",
     "title": "Designing the future",
     "subtitle": "line by line.",
-    "text": "I'm passionate about creating digital solutions that solve real problems. My approach combines technical precision with a keen eye for design, always seeking elegant solutions to complex problems.",
-    "badge": "Full Stack Developer",
+    "text": "I'm passionate about building digital solutions that solve real problems. I work on high-impact professional projects combining robust backends, complex integrations and smooth user experiences.",
+    "badge": "Fullstack Developer",
     "stats": {
       "tech": "Technologies",
-      "tech_value": "10+",
+      "tech_target": "15",
       "projects": "Projects",
-      "projects_value": "5+",
-      "commitment": "Commitment",
-      "commitment_value": "100%"
+      "projects_target": "6",
+      "experience": "Years Exp.",
+      "experience_target": "2"
     }
   },
   "skills": {
@@ -51,22 +52,52 @@
   "experience": {
     "title": "Work",
     "title_highlight": "Experience",
-    "description": "A career focused on creating scalable solutions. Here I present my professional journey and key developed projects.",
-    "role": "IT Support & Software Development",
-    "company": "ESCIENZA E.I.R.L.",
-    "period": "May 2025 – December 2025",
-    "projects": {
-      "cuadres": {
-        "title": "Financial Reconciliation System",
-        "description": "Automation of bank reconciliations and monthly reports."
-      },
-      "custom": {
-        "title": "Custom System",
-        "description": "Web platform for real-time stock, sales and distribution management."
-      },
-      "web": {
-        "title": "Corporate Website Redesign",
-        "description": "Modernization of ESCIENZA's website with focus on UX/UI and SEO optimization."
+    "description": "A career focused on creating scalable solutions. Here I present my professional journey and the key systems developed.",
+    "current_badge": "Current",
+    "holinsys": {
+      "role": "Fullstack Developer",
+      "company": "HOLINSYS",
+      "period": "January 2026 \u2013 Present",
+      "projects": {
+        "marketing": {
+          "title": "Marketing Management System \u2013 Depilab",
+          "description": "Marketing metrics dashboard: appointments, revenue, campaigns and influencers. Includes automated social media scraping."
+        },
+        "tracking": {
+          "title": "Web Traffic Tracking",
+          "description": "Web analytics system: visit origin, UTMs, complete funnel from first visit to successful purchase."
+        },
+        "citas": {
+          "title": "Appointment Funnel Tracking",
+          "description": "Step-by-step booking flow analysis: drop-off rate, time per stage and final conversion rate."
+        },
+        "emails": {
+          "title": "Transactional Emails",
+          "description": "Email infrastructure with AWS SES and Mautic. Covers registration, account recovery, appointments and purchase confirmations."
+        },
+        "desktop": {
+          "title": "Desktop App + PinPad",
+          "description": "Electron app for Depilab branches with QR login, Niubiz Lane 7000 PinPad integration and real-time streaming via WebSockets."
+        }
+      }
+    },
+    "escienza": {
+      "role": "IT Support & Software Development",
+      "company": "ESCIENZA E.I.R.L.",
+      "period": "May 2025 \u2013 December 2025",
+      "projects": {
+        "cuadres": {
+          "title": "Financial Reconciliation System",
+          "description": "Automation of bank reconciliations and monthly reports."
+        },
+        "custom": {
+          "title": "Custom System",
+          "description": "Web platform for real-time stock, sales and distribution management."
+        },
+        "web": {
+          "title": "Corporate Website Redesign",
+          "description": "Modernization of ESCIENZA's website with focus on UX/UI and SEO optimization."
+        }
       }
     }
   },
@@ -74,19 +105,86 @@
     "label": "Portfolio",
     "title": "Featured",
     "title_highlight": "Projects",
-    "description": "Exploring complex digital solutions. Below, the technical details of my most recent project.",
-    "featured": {
-      "name": "RestCabaña",
+    "description": "Real high-impact systems, from marketing management platforms to desktop apps with hardware integration.",
+    "filters": {
+      "all": "All",
+      "fullstack": "Fullstack",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "desktop": "Desktop"
+    },
+    "badges": {
+      "professional": "Professional",
+      "personal": "Personal",
+      "private_code": "Private Code"
+    },
+    "cta_demo": "View Demo",
+    "cta_code": "View Code",
+    "marketing": {
+      "name": "Marketing Management System",
+      "subtitle": "Digital Marketing Management \u2013 Depilab",
+      "description": "Fullstack platform to manage and analyze Depilab's marketing: real-time metrics on appointments and revenue, campaign creation, influencer coupon management and automated social media scraping with Playwright.",
+      "features": [
+        "Real-time metrics: appointments, campaigns and revenue",
+        "Automated influencer social media scraping with Playwright",
+        "Discount coupon and campaign management",
+        "Redis cache for high-traffic queries"
+      ]
+    },
+    "tracking": {
+      "name": "Traffic & Conversion Tracking",
+      "subtitle": "Advanced Web Analytics \u2013 Depilab",
+      "description": "Tracking system embedded in Depilab's website to identify the origin of each visit: UTM campaigns, Google, social media or direct traffic. Tracks the full funnel from first visit to purchase.",
+      "features": [
+        "Source identification: UTM, campaigns, Google, direct",
+        "Full funnel: visit \u2192 cart \u2192 booking \u2192 purchase",
+        "First and last interaction tracking per user",
+        "Time tracking at each funnel stage"
+      ]
+    },
+    "citas": {
+      "name": "Appointment Funnel Tracking",
+      "subtitle": "Booking Analytics \u2013 Depilab",
+      "description": "Step-by-step analysis of Depilab's booking flow. Records at which step each user drops off, time spent per stage and final conversion rate to optimize the scheduling process.",
+      "features": [
+        "Step-by-step booking flow tracking",
+        "Drop-off analysis per stage with conversion rates",
+        "Average time spent per step",
+        "Bottleneck identification in the process"
+      ]
+    },
+    "emails": {
+      "name": "Transactional Email System",
+      "subtitle": "Email Infrastructure \u2013 Depilab",
+      "description": "Complete transactional email system with AWS SES as provider and Mautic as orchestrator. Covers all customer lifecycle events deployed in Docker containers.",
+      "features": [
+        "Welcome, recovery and verification emails",
+        "Booked and rescheduled appointment notifications",
+        "Purchase confirmations and receipts",
+        "Mautic orchestration with AWS SES delivery"
+      ]
+    },
+    "desktop": {
+      "name": "Depilab Sede App",
+      "subtitle": "Desktop App + PinPad \u2013 Depilab",
+      "description": "Electron application for Depilab physical branches. The receptionist selects the branch and seller, the customer scans a QR to log into the tablet and make an appointment or purchase. Includes native Niubiz Lane 7000 PinPad integration for in-branch payments.",
+      "features": [
+        "QR login for customers from the branch tablet",
+        "Niubiz Lane 7000 PinPad integration for in-person payments",
+        "Automatic branch detection by internet IP",
+        "Real-time tablet streaming via WebSockets"
+      ]
+    },
+    "restcabana": {
+      "name": "RestCaba\u00f1a",
       "subtitle": "Restaurant Management System",
-      "description": "Complete mobile application for comprehensive restaurant management. Includes inventory control, order management, sales reports and staff administration.",
-      "features": {
-        "inventory": "Inventory",
-        "orders": "Orders",
-        "reports": "Reports",
-        "staff": "Staff"
-      },
-      "cta_demo": "View Demo",
-      "cta_code": "Code"
+      "description": "Complete mobile application for comprehensive restaurant management. Includes inventory control, order management, sales reports and staff administration, with a NestJS backend and React Native app.",
+      "features": [
+        "Complete REST API with JWT authentication",
+        "iOS and Android mobile app with React Native",
+        "Integrated payment gateway",
+        "Real-time sales and inventory reports"
+      ]
     }
   },
   "contact": {

@@ -1,16 +1,117 @@
----
-// Projects Section - Featured Case Study Style
-import { t, type Lang } from '../i18n/ui';
+﻿---
+// Projects Section - Filterable grid with 6 projects
+import { t, tArray, type Lang } from '../i18n/ui';
 
 interface Props {
   lang?: Lang;
 }
 
 const { lang = 'es' } = Astro.props;
+
+// Project data: translations come from i18n, static data lives here
+const projects = [
+  {
+    key: 'marketing',
+    category: 'fullstack',
+    type: 'professional',
+    isPrivate: true,
+    imagePlaceholderIcon: 'chart',
+    tech: [
+      { name: 'React', color: '#61DAFB' },
+      { name: 'Node.js', color: '#5FA04E' },
+      { name: 'Redis', color: '#FF4438' },
+      { name: 'MySQL', color: '#4479A1' },
+      { name: 'Playwright', color: '#2EAD33' },
+    ],
+    demo: null,
+    code: null,
+  },
+  {
+    key: 'desktop',
+    category: 'desktop',
+    type: 'professional',
+    isPrivate: true,
+    imagePlaceholderIcon: 'monitor',
+    tech: [
+      { name: 'Electron', color: '#47848F' },
+      { name: 'Node.js', color: '#5FA04E' },
+      { name: 'WebSockets', color: '#8b5cf6' },
+      { name: 'Niubiz', color: '#0052CC' },
+    ],
+    demo: null,
+    code: null,
+  },
+  {
+    key: 'tracking',
+    category: 'backend',
+    type: 'professional',
+    isPrivate: true,
+    imagePlaceholderIcon: 'radar',
+    tech: [
+      { name: 'Node.js', color: '#5FA04E' },
+      { name: 'MySQL', color: '#4479A1' },
+      { name: 'UTM', color: '#0d9488' },
+    ],
+    demo: null,
+    code: null,
+  },
+  {
+    key: 'emails',
+    category: 'backend',
+    type: 'professional',
+    isPrivate: true,
+    imagePlaceholderIcon: 'mail',
+    tech: [
+      { name: 'AWS SES', color: '#FF9900' },
+      { name: 'Mautic', color: '#4E5D9D' },
+      { name: 'Docker', color: '#2496ED' },
+      { name: 'Node.js', color: '#5FA04E' },
+    ],
+    demo: null,
+    code: null,
+  },
+  {
+    key: 'citas',
+    category: 'backend',
+    type: 'professional',
+    isPrivate: true,
+    imagePlaceholderIcon: 'calendar',
+    tech: [
+      { name: 'Node.js', color: '#5FA04E' },
+      { name: 'MySQL', color: '#4479A1' },
+    ],
+    demo: null,
+    code: null,
+  },
+  {
+    key: 'restcabana',
+    category: 'mobile',
+    type: 'personal',
+    isPrivate: false,
+    imagePlaceholderIcon: null,
+    image: '/screenshots/restcabana_ss1.jpg',
+    tech: [
+      { name: 'NestJS', color: '#E0234E' },
+      { name: 'React Native', color: '#61DAFB' },
+      { name: 'TypeScript', color: '#3178C6' },
+      { name: 'MySQL', color: '#4479A1' },
+      { name: 'Firebase', color: '#DD2C00' },
+    ],
+    demo: 'https://github.com/RonaldDM',
+    code: 'https://github.com/RonaldDM',
+  },
+] as const;
+
+const placeholderIcons: Record<string, string> = {
+  chart: `<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="7 10 10 7 13 10 17 6"/></svg>`,
+  monitor: `<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><rect x="15" y="6" width="4" height="6" rx="1"/></svg>`,
+  radar: `<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="14" x2="12" y2="22" opacity="0"/></svg>`,
+  mail: `<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+  calendar: `<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>`,
+};
 ---
 
 <section class="projects section" id="projects">
-  <!-- Background Glows -->
   <div class="project-glow glow-1"></div>
   <div class="project-glow glow-2"></div>
 
@@ -25,220 +126,106 @@ const { lang = 'es' } = Astro.props;
         {t(lang, 'projects.title')}
         <span class="gradient-text">{t(lang, 'projects.title_highlight')}</span>
       </h2>
+      <p class="section-description">{t(lang, 'projects.description')}</p>
     </div>
 
-    <!-- Featured Project Card -->
-    <article class="project-card reveal">
-      <!-- Visual Column -->
-      <div class="project-visual">
-        <!-- Screenshot Carousel -->
-        <div class="screenshot-carousel">
-          <div class="carousel-track" id="carousel-track">
-            <img
-              src="/screenshots/restcabana_ss1.jpg"
-              alt="RestCabaña Screenshot 1"
-              class="carousel-slide active"
-              loading="eager"
-              width="640"
-              height="360"
-            />
-            <img
-              src="/screenshots/restcabana_ss2.jpg"
-              alt="RestCabaña Screenshot 2"
-              class="carousel-slide"
-              loading="lazy"
-              width="640"
-              height="360"
-            />
-            <img
-              src="/screenshots/restcabana_ss3.jpg"
-              alt="RestCabaña Screenshot 3"
-              class="carousel-slide"
-              loading="lazy"
-              width="640"
-              height="360"
-            />
-          </div>
-          <!-- Navigation Dots -->
-          <div class="carousel-dots">
-            <button class="dot active" data-index="0" aria-label="Screenshot 1" aria-current="true"
-            ></button>
-            <button class="dot" data-index="1" aria-label="Screenshot 2"></button>
-            <button class="dot" data-index="2" aria-label="Screenshot 3"></button>
-          </div>
-          <!-- Navigation Arrows -->
-          <button class="carousel-arrow prev" id="carousel-prev" aria-label="Previous screenshot">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
+    <!-- Filter Tabs -->
+    <div class="filter-tabs reveal" role="tablist">
+      {
+        (['all', 'fullstack', 'backend', 'mobile', 'desktop'] as const).map((f) => (
+          <button
+            class:list={['filter-btn', f === 'all' && 'active']}
+            data-filter={f}
+            role="tab"
+            aria-selected={f === 'all' ? 'true' : 'false'}
+          >
+            {t(lang, `projects.filters.${f}`)}
           </button>
-          <button class="carousel-arrow next" id="carousel-next" aria-label="Next screenshot">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
-        </div>
-        <!-- Glow Effect -->
-        <div class="card-glow"></div>
-      </div>
+        ))
+      }
+    </div>
 
-      <!-- Content Column -->
-      <div class="project-content">
-        <div class="project-header">
-          <img src="/restcabana.png" alt="RestCabaña" class="project-logo" />
-          <h3 class="project-title">RestCabaña</h3>
-        </div>
+    <!-- Projects Grid -->
+    <div class="projects-grid" id="projects-grid">
+      {
+        projects.map((project) => {
+          const features: string[] = tArray(lang, `projects.${project.key}.features`);
+          const hasImage = !project.imagePlaceholderIcon && 'image' in project;
+          return (
+            <article
+              class="project-card glass reveal"
+              data-category={project.category}
+            >
+              <!-- Card Image -->
+              <div class="card-image">
+                {project.imagePlaceholderIcon ? (
+                  <div class="card-placeholder">
+                    <Fragment set:html={placeholderIcons[project.imagePlaceholderIcon]} />
+                  </div>
+                ) : (
+                  <img
+                    src={(project as { image: string }).image}
+                    alt={t(lang, `projects.${project.key}.name`)}
+                    loading="lazy"
+                  />
+                )}
+                <span class:list={['type-badge', `type-badge--${project.type}`]}>
+                  {t(lang, `projects.badges.${project.type}`)}
+                </span>
+              </div>
 
-        <p class="project-description">
-          {t(lang, 'projects.featured.subtitle')}. {t(lang, 'projects.featured.description')}
-        </p>
+              <!-- Card Body -->
+              <div class="card-body">
+                <div>
+                  <h3 class="card-title">{t(lang, `projects.${project.key}.name`)}</h3>
+                  <p class="card-subtitle">{t(lang, `projects.${project.key}.subtitle`)}</p>
+                </div>
 
-        <!-- Tech Stack -->
-        <div class="tech-section">
-          <span class="tech-label">Stack Tecnológico</span>
-          <div class="tech-badges">
-            <span class="tech-badge"
-              ><span class="dot" style="background: #E0234E"></span>NestJS</span
-            >
-            <span class="tech-badge"
-              ><span class="dot" style="background: #61DAFB"></span>React Native</span
-            >
-            <span class="tech-badge"
-              ><span class="dot" style="background: #3178C6"></span>TypeScript</span
-            >
-            <span class="tech-badge"
-              ><span class="dot" style="background: #4479A1"></span>MySQL</span
-            >
-            <span class="tech-badge"
-              ><span class="dot" style="background: #2D3748"></span>Prisma</span
-            >
-            <span class="tech-badge"
-              ><span class="dot" style="background: #FFCA28"></span>Firebase</span
-            >
-          </div>
-        </div>
+                <p class="card-description">{t(lang, `projects.${project.key}.description`)}</p>
 
-        <!-- Features -->
-        <div class="features-section">
-          <span class="features-label">Funcionalidades Core</span>
-          <div class="features-list">
-            <div class="feature-item">
-              <div class="feature-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
-                  ></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                </svg>
-              </div>
-              <div>
-                <h4>API REST Completa</h4>
-                <p>Backend robusto con autenticación JWT</p>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                  <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                </svg>
-              </div>
-              <div>
-                <h4>App Móvil</h4>
-                <p>React Native para iOS y Android</p>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                  <line x1="1" y1="10" x2="23" y2="10"></line>
-                </svg>
-              </div>
-              <div>
-                <h4>Pasarela de Pagos</h4>
-                <p>Integración segura para cobros</p>
-              </div>
-            </div>
-          </div>
-        </div>
+                <ul class="card-features">
+                  {features.slice(0, 3).map((f: string) => (
+                    <li>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
 
-        <!-- Action Buttons -->
-        <div class="project-actions">
-          <a href="#" class="btn btn-primary">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-            {t(lang, 'projects.featured.cta_demo')}
-          </a>
-          <a href="https://github.com/RonaldDM" target="_blank" class="btn btn-outline">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-              ></path>
-            </svg>
-            {t(lang, 'projects.featured.cta_code')}
-          </a>
-        </div>
-      </div>
-    </article>
+                <div class="card-tech">
+                  {project.tech.map((tech) => (
+                    <span class="tech-dot">
+                      <span class="dot" style={`background:${tech.color}`} />
+                      {tech.name}
+                    </span>
+                  ))}
+                </div>
+
+                <div class="card-actions">
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                      {t(lang, 'projects.cta_demo')}
+                    </a>
+                  )}
+                  {project.isPrivate ? (
+                    <span class="btn btn-outline btn-sm btn-disabled" aria-disabled="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                      {t(lang, 'projects.badges.private_code')}
+                    </span>
+                  ) : project.code && (
+                    <a href={project.code} target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                      {t(lang, 'projects.cta_code')}
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
   </div>
 </section>
 
@@ -249,7 +236,6 @@ const { lang = 'es' } = Astro.props;
     overflow: hidden;
   }
 
-  /* Background Glows */
   .project-glow {
     position: absolute;
     border-radius: 50%;
@@ -259,39 +245,23 @@ const { lang = 'es' } = Astro.props;
   .glow-1 {
     width: 600px;
     height: 600px;
-    background: rgba(13, 148, 136, 0.12);
+    background: rgba(13, 148, 136, 0.1);
     top: -10%;
     right: -10%;
-    filter: blur(100px);
-    animation: blob 7s infinite;
+    filter: blur(120px);
   }
 
   .glow-2 {
     width: 500px;
     height: 500px;
-    background: rgba(139, 92, 246, 0.08);
-    bottom: -10%;
+    background: rgba(139, 92, 246, 0.07);
+    bottom: 0;
     left: -10%;
-    filter: blur(100px);
-    animation: blob 7s infinite reverse;
-  }
-
-  @keyframes blob {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
+    filter: blur(120px);
   }
 
   .section-header {
-    text-align: left;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
   .section-label {
@@ -324,626 +294,277 @@ const { lang = 'es' } = Astro.props;
 
   .section-description {
     color: var(--color-text-muted);
-    font-size: 1.1rem;
+    font-size: 1rem;
     max-width: 600px;
+  }
+
+  /* Filter Tabs */
+  .filter-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-dark-muted);
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-family: inherit;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .filter-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
 
   /* Project Card */
   .project-card {
-    display: grid;
-    grid-template-columns: 7fr 5fr;
-    gap: 0;
-    background: var(--color-dark-soft);
-    border: 1px solid var(--color-dark-muted);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: var(--radius-xl);
     overflow: hidden;
-    position: relative;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-base);
   }
 
-  /* Visual Column */
-  .project-visual {
-    position: relative;
-    min-height: 500px;
-    overflow: hidden;
+  .project-card:hover {
+    border-color: rgba(13, 148, 136, 0.35);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 
-  /* Screenshot Carousel */
-  .screenshot-carousel {
-    position: absolute;
-    inset: 0;
+  /* Card Image */
+  .card-image {
+    position: relative;
+    height: 180px;
     background: var(--color-dark);
-  }
-
-  .carousel-track {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  .carousel-slide {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-
-  .carousel-slide.active {
-    opacity: 1;
-  }
-
-  .carousel-dots {
-    position: absolute;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.5rem;
-    z-index: 10;
-  }
-
-  .carousel-dots .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    border: none;
-    cursor: pointer;
-    transition: all var(--transition-base);
-  }
-
-  .carousel-dots .dot.active {
-    width: 24px;
-    border-radius: 4px;
-    background: var(--color-primary);
-  }
-
-  .carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
-    z-index: 10;
-    transition: all var(--transition-base);
-  }
-
-  .carousel-arrow:hover {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-  }
-
-  .carousel-arrow.prev {
-    left: 1rem;
-  }
-
-  .carousel-arrow.next {
-    right: 1rem;
-  }
-
-  .card-glow {
-    position: absolute;
-    bottom: -50px;
-    right: -50px;
-    width: 300px;
-    height: 300px;
-    background: rgba(13, 148, 136, 0.2);
-    border-radius: 50%;
-    filter: blur(80px);
-    transition: all var(--transition-base);
-    z-index: 0;
-  }
-
-  .project-card:hover .card-glow {
-    background: rgba(13, 148, 136, 0.3);
-  }
-
-  /* Content Column */
-  .project-content {
-    padding: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    background: var(--color-dark-soft);
-  }
-
-  .project-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .project-logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  .project-title {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--color-light);
-  }
-
-  .project-description {
-    font-size: 1rem;
-    color: var(--color-text-muted);
-    line-height: 1.7;
-  }
-
-  .project-note {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-    padding-left: 1rem;
-    border-left: 2px solid rgba(13, 148, 136, 0.3);
-  }
-
-  /* Tech Stack */
-  .tech-section {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .tech-label,
-  .features-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--color-text-muted);
-  }
-
-  .tech-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tech-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0.875rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-full);
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--color-primary-light);
-  }
-
-  .tech-badge .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-  }
-
-  /* Features */
-  .features-section {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .features-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .feature-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .feature-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    background: rgba(13, 148, 136, 0.15);
-    border-radius: var(--radius-md);
-    color: var(--color-primary);
-    flex-shrink: 0;
-    transition: all var(--transition-fast);
-  }
-
-  .feature-item:hover .feature-icon {
-    background: var(--color-primary);
-    color: white;
-  }
-
-  .feature-item h4 {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-light);
-    margin-bottom: 0.125rem;
-  }
-
-  .feature-item p {
-    font-size: 0.8rem;
-    color: var(--color-text-muted);
-  }
-
-  /* Action Buttons */
-  .project-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: auto;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--color-dark-muted);
-  }
-
-  .project-actions .btn {
-    flex: 1;
-  }
-
-  /* Responsive */
-  @media (max-width: 1024px) {
-    .project-card {
-      grid-template-columns: 1fr;
-    }
-
-    .project-visual {
-      min-height: 350px;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .project-content {
-      padding: 1.5rem;
-    }
-
-    .project-title {
-      font-size: 1.5rem;
-    }
-
-    .project-actions {
-      flex-direction: column;
-    }
-
-    .browser-mockup {
-      inset: 1rem;
-    }
-
-    .floating-badge {
-      top: 2rem;
-      left: 2rem;
-    }
-  }
-
-  /* Other Projects Grid */
-  .other-projects {
-    margin-top: 3rem;
-  }
-
-  .other-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-light);
-    margin-bottom: 1.5rem;
-  }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-  }
-
-  .mini-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-xl);
-    padding: 1.5rem;
-    transition: all var(--transition-base);
-    display: flex;
-    flex-direction: column;
-    position: relative;
     overflow: hidden;
+    flex-shrink: 0;
   }
 
-  .mini-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(13, 148, 136, 0.5), transparent);
-    opacity: 0;
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+  }
+
+  .project-card:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .card-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(139, 92, 246, 0.08));
+    color: var(--color-primary);
+    opacity: 0.75;
     transition: opacity var(--transition-base);
   }
 
-  .mini-card:hover {
-    border-color: rgba(13, 148, 136, 0.4);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -15px rgba(13, 148, 136, 0.2);
-  }
-
-  .mini-card:hover::before {
+  .project-card:hover .card-placeholder {
     opacity: 1;
   }
 
-  .mini-header {
+  .type-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(8px);
+  }
+
+  .type-badge--professional {
+    background: rgba(13, 148, 136, 0.2);
+    border: 1px solid rgba(13, 148, 136, 0.4);
+    color: #2dd4bf;
+  }
+
+  .type-badge--personal {
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    color: #a78bfa;
+  }
+
+  /* Card Body */
+  .card-body {
+    padding: 1.25rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    gap: 0.875rem;
+    flex: 1;
   }
 
-  .mini-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    background: rgba(13, 148, 136, 0.15);
-    border-radius: var(--radius-lg);
-    color: var(--color-primary);
-    transition: all var(--transition-base);
-  }
-
-  .mini-card:hover .mini-icon {
-    background: var(--color-primary);
-    color: white;
-  }
-
-  .mini-arrow {
-    color: var(--color-text-muted);
-    font-size: 1.25rem;
-    transition: color var(--transition-fast);
-  }
-
-  .mini-card:hover .mini-arrow {
-    color: var(--color-primary);
-  }
-
-  .mini-title {
-    font-size: 1rem;
-    font-weight: 600;
+  .card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
     color: var(--color-light);
-    margin-bottom: 0.5rem;
     transition: color var(--transition-fast);
+    line-height: 1.3;
+    margin-bottom: 0.2rem;
   }
 
-  .mini-card:hover .mini-title {
+  .project-card:hover .card-title {
     color: var(--color-primary);
   }
 
-  .mini-description {
-    font-size: 0.85rem;
+  .card-subtitle {
+    font-size: 0.77rem;
     color: var(--color-text-muted);
-    line-height: 1.5;
-    margin-bottom: 1rem;
-    flex-grow: 1;
+    opacity: 0.7;
   }
 
-  .mini-tech {
+  .card-description {
+    font-size: 0.83rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .card-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  .card-features li svg {
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .card-tech {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.375rem;
-    margin-bottom: 1rem;
+    gap: 0.35rem;
+    margin-top: auto;
   }
 
-  .mini-tech span {
-    padding: 0.25rem 0.625rem;
-    background: var(--color-dark);
-    color: var(--color-text-muted);
+  .tech-dot {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
     font-size: 0.7rem;
     font-weight: 500;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-dark-muted);
+    padding: 0.2rem 0.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
   }
 
-  .mini-footer {
-    padding-top: 0.75rem;
+  .tech-dot .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .card-actions {
+    display: flex;
+    gap: 0.625rem;
+    padding-top: 0.875rem;
     border-top: 1px solid var(--color-dark-muted);
   }
 
-  .mini-stat {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--color-primary);
+  .btn-sm {
+    padding: 0.45rem 0.875rem;
+    font-size: 0.78rem;
+    gap: 0.35rem;
   }
 
-  @media (max-width: 900px) {
+  .btn-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  @media (max-width: 1024px) {
     .projects-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media (max-width: 600px) {
-    .projects {
-      padding: 50px 0;
-    }
-
-    .projects-header {
-      margin-bottom: 2rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-    }
-
     .projects-grid {
       grid-template-columns: 1fr;
-      gap: 1rem;
     }
 
-    /* Compact carousel */
-    .carousel-container {
-      margin-bottom: 1.5rem;
+    .filter-tabs {
+      gap: 0.375rem;
     }
 
-    .carousel-wrapper {
-      height: 200px;
-    }
-
-    .carousel-arrow {
-      width: 32px;
-      height: 32px;
-    }
-
-    /* Compact project info */
-    .project-info {
-      padding: 1rem;
-    }
-
-    .project-name {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .project-description {
+    .filter-btn {
+      padding: 0.4rem 0.875rem;
       font-size: 0.8rem;
-      -webkit-line-clamp: 2;
-      margin-bottom: 0.75rem;
-    }
-
-    .tech-stack {
-      margin-bottom: 0.75rem;
-    }
-
-    .tech-stack-title {
-      font-size: 0.7rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .tech-tag {
-      font-size: 0.7rem;
-      padding: 0.25rem 0.5rem;
-    }
-
-    .project-links {
-      gap: 0.5rem;
-    }
-
-    .project-links a {
-      font-size: 0.75rem;
-      padding: 0.5rem 1rem;
-    }
-
-    /* Compact mini cards */
-    .mini-card {
-      padding: 1rem;
-    }
-
-    .mini-title {
-      font-size: 0.9rem;
-    }
-
-    .mini-description {
-      font-size: 0.8rem;
-      -webkit-line-clamp: 2;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const CAROUSEL_INTERVAL_MS = 5000;
-    const CAROUSEL_RESTART_DELAY_MS = 2000;
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.project-card');
 
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.carousel-dots .dot');
-    const prevBtn = document.getElementById('carousel-prev');
-    const nextBtn = document.getElementById('carousel-next');
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter!;
 
-    if (!slides.length) return;
-
-    let currentIndex = 0;
-    let intervalId: ReturnType<typeof setInterval> | null = null;
-    let restartTimer: ReturnType<typeof setTimeout> | null = null;
-
-    function goToSlide(index: number) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
+      filterBtns.forEach((b) => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
       });
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-        dot.setAttribute('aria-current', String(i === index));
-      });
-      currentIndex = index;
-    }
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
 
-    function nextSlide() {
-      goToSlide((currentIndex + 1) % slides.length);
-    }
-
-    function prevSlide() {
-      goToSlide((currentIndex - 1 + slides.length) % slides.length);
-    }
-
-    function startAutoAdvance() {
-      intervalId = setInterval(nextSlide, CAROUSEL_INTERVAL_MS);
-    }
-
-    function stopAutoAdvance() {
-      if (intervalId !== null) {
-        clearInterval(intervalId);
-        intervalId = null;
-      }
-    }
-
-    function onManualNav() {
-      stopAutoAdvance();
-      if (restartTimer !== null) clearTimeout(restartTimer);
-      restartTimer = setTimeout(startAutoAdvance, CAROUSEL_RESTART_DELAY_MS);
-    }
-
-    prevBtn?.addEventListener('click', () => {
-      prevSlide();
-      onManualNav();
-    });
-    nextBtn?.addEventListener('click', () => {
-      nextSlide();
-      onManualNav();
-    });
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        goToSlide(i);
-        onManualNav();
+      cards.forEach((card) => {
+        const category = card.dataset.category!;
+        const visible = filter === 'all' || category === filter;
+        card.style.display = visible ? '' : 'none';
       });
     });
-
-    startAutoAdvance();
-
-    // Stop auto-advance when the section leaves the viewport
-    const section = document.getElementById('projects');
-    if (section) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (!entry.isIntersecting) {
-            stopAutoAdvance();
-            if (restartTimer !== null) clearTimeout(restartTimer);
-            observer.disconnect();
-          }
-        },
-        { threshold: 0 }
-      );
-      observer.observe(section);
-    }
   });
 </script>
